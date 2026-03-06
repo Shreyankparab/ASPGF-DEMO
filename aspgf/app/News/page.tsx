@@ -20,6 +20,8 @@ export default function NewsEvents() {
   const [selectedItem, setSelectedItem] = useState<NewsItem | null>(null);
   const gridRef = useRef<HTMLDivElement>(null);
   const modalRef = useRef<HTMLDivElement>(null);
+  const headingRef = useRef<HTMLHeadingElement>(null);
+  const tagRef = useRef<HTMLSpanElement>(null);
 
   const filteredData =
     activeCategory === "All"
@@ -64,21 +66,50 @@ export default function NewsEvents() {
     } else {
       document.body.style.overflow = "auto";
     }
-  }, [selectedItem]);
+    const animateText = (element: HTMLElement | null) => {
+      if (!element) return;
+
+      const words = element.innerText.split(" ");
+
+      element.innerHTML = words
+        .map(
+          (word) =>
+            `<span class="word" style="display:inline-block; overflow:hidden;">
+            <span style="display:inline-block;">${word}</span>
+          </span>`,
+        )
+        .join(" ");
+
+      const innerWords = element.querySelectorAll(".word span");
+
+      gsap.from(innerWords, {
+        y: 40,
+        opacity: 0,
+        stagger: 0.08,
+        duration: 0.8,
+        ease: "power3.out",
+      });
+    };
+
+    animateText(tagRef.current);
+    animateText(headingRef.current);
+  }, []);
 
   return (
     <div className=" bg-[#f5f5f5]">
       {/* ================= HEADER ================= */}
       <div className="bg-[#0f766e] py-16 text-white text-center relative">
         <div className="flex ml-88 gap-2 mb-4">
-          <span className={`${caveat.className} text-2xl`}>News & Events</span>
+          <span ref={tagRef} className={`${caveat.className} text-2xl`}>
+            News & Events
+          </span>
         </div>
 
-        <h2 className="text-4xl font-bold">
+        <h2 ref={headingRef} className="text-4xl font-bold">
           Community-focused work for a better tomorrow.
         </h2>
 
-        <div className="absolute bottom-0 left-0 w-full h-2 bg-[#A828C6] "></div>
+        <div className="absolute bottom-0 left-0 w-full h-2 bg-[#A828C6]"></div>
       </div>
 
       {/* ================= FILTER ================= */}
