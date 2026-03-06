@@ -120,7 +120,7 @@ export function Navbar() {
                 {/* DONATE BUTTON (CONTACT) */}
                 <Link
                     href="/contactUs"
-                    className="h-16 px-10 bg-[#C56BE3] hover:bg-purple-500 transition-all flex items-center gap-2 text-white font-black text-sm uppercase tracking-widest cursor-pointer whitespace-nowrap"
+                    className="h-16 px-10 bg-[#A828C6] hover:bg-[#9122AB] transition-all flex items-center gap-2 text-white font-black text-sm uppercase tracking-widest cursor-pointer whitespace-nowrap"
                 >
                     <Phone size={18} fill="white" />
                     <span>Contact</span>
@@ -193,7 +193,7 @@ export function Navbar() {
                         <Link
                             href="/contactUs"
                             onClick={() => setIsMenuOpen(false)}
-                            className="w-full py-4 bg-[#C56BE3] text-white rounded-2xl flex items-center justify-center gap-2 font-black uppercase tracking-[0.1em] shadow-lg shadow-purple-200"
+                            className="w-full py-4 bg-[#A828C6] text-white rounded-2xl flex items-center justify-center gap-2 font-black uppercase tracking-[0.1em] shadow-lg shadow-purple-500/20"
                         >
                             <Phone size={18} fill="white" />
                             <span>Contact Us</span>

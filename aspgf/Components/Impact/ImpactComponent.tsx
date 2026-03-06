@@ -2,7 +2,7 @@
 
 import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
-import { Caveat, Nunito, Manrope, Cabin } from "next/font/google";
+import { Caveat, Nunito, Cabin } from "next/font/google";
 import { MapPin, Play, X } from "lucide-react";
 import StatsSection from "../StatsSection";
 import gsap from "gsap";
@@ -15,9 +15,11 @@ const cabin = Cabin({ subsets: ["latin"] });
 
 gsap.registerPlugin(ScrollTrigger);
 
+type VideoStory = typeof videoStories[0];
+
 export default function ImpactComponent() {
     const sectionRef = useRef(null);
-    const [activeVideo, setActiveVideo] = useState<any | null>(null);
+    const [activeVideo, setActiveVideo] = useState<VideoStory | null>(null);
 
     const featuredVideo = videoStories.find(v => v.isFeatured);
     const stackedVideos = videoStories.filter(v => v.id === 2 || v.id === 3);

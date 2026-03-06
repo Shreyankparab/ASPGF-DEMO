@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import AboutClient from "@/Components/AboutUs/AboutClient";
 import HeroSection from "@/Components/HeroSection";
 import LeadershipSection from "@/Components/AboutUs/LeadershipSection";
+import HistorySection from "@/Components/AboutUs/HistorySection";
 
 export const metadata: Metadata = {
     title: "About Us | Global Foundation",
@@ -28,6 +29,9 @@ export default function AboutPage() {
 
             {/* LEADERSHIP PORTFOLIO PART */}
             <LeadershipSection />
+
+            {/* HISTORY PART */}
+            <HistorySection />
         </main>
     );
 }
