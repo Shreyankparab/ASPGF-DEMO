@@ -2,7 +2,6 @@
 
 import React, { useState, useEffect, useRef } from "react";
 import { gsap } from "gsap";
-
 import { newsData, Category, NewsItem } from "@/Components/newsData";
 import Image from "next/image";
 import { FiCalendar, FiMapPin, FiX } from "react-icons/fi";
