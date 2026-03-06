@@ -16,13 +16,17 @@ export default function Page() {
   return (
     <>
       <HeroSection />
-      <AboutSection/>
-      <FocusArea/>
-    
-      <WhatWeDoSection/>
-        <StatsSection/>
-      <FoundersSectionMain/>
-      <FAQSection/>
+      <AboutSection />
+      <FocusArea />
+
+      <WhatWeDoSection />
+      <section className="bg-white">
+        <div className="max-w-7xl mx-auto py-12">
+          <StatsSection />
+        </div>
+      </section>
+      <FoundersSectionMain />
+      <FAQSection />
 
     </>
   );

@@ -2,12 +2,11 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
-import { Manrope, Nunito, Cabin } from "next/font/google";
+import { Nunito, Cabin } from "next/font/google";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
-const manrope = Manrope({ subsets: ["latin"], weight: ["400", "500", "600", "700"] });
 const nunito = Nunito({ subsets: ["latin"], weight: ["400", "700", "800"] });
-const cabin = Cabin({ subsets: ["latin"] });
+const cabin = Cabin({ subsets: ["latin"], weight: ["400", "500", "600", "700"] });
 
 import { allWorkItems, WorkItem } from "@/data/ourWorkData";
 

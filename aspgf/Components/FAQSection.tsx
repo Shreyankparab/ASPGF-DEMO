@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { useState } from "react";
 import { FiPlus, FiMinus } from "react-icons/fi";
-import { Caveat, Nunito, Cabin,  } from "next/font/google";
+import { Caveat, Nunito, Cabin, } from "next/font/google";
 
 const caveat = Caveat({ subsets: ["latin"], weight: ["400", "700"] });
 const nunito = Nunito({ subsets: ["latin"], weight: ["400", "700", "800"] });
@@ -89,32 +89,28 @@ export default function FAQSection() {
               return (
                 <div
                   key={index}
-                  className={`transition-all duration-500 ease-in-out bg-white shadow-sm rounded-[32px] border border-gray-100 overflow-hidden ${
-                    isOpen
+                  className={`transition-all duration-500 ease-in-out bg-white shadow-sm rounded-[32px] border border-gray-100 overflow-hidden ${isOpen
                       ? "ring-2 ring-[#00715D]/5 ring-offset-0 scale-[1.02]"
                       : "hover:border-[#00715D]/30"
-                  }`}
+                    }`}
                 >
                   <button
                     onClick={() => setOpenIndex(isOpen ? null : index)}
-                    className={`w-full flex items-center justify-between text-left gap-4 py-5 px-6 md:py-6 md:px-8 transition-colors duration-300 ${
-                      isOpen ? "bg-[#0b6a52]/5" : ""
-                    }`}
+                    className={`w-full flex items-center justify-between text-left gap-4 py-5 px-6 md:py-6 md:px-8 transition-colors duration-300 ${isOpen ? "bg-[#0b6a52]/5" : ""
+                      }`}
                   >
                     <h3
-                      className={`text-[16px] md:text-lg font-bold transition-colors duration-300 ${
-                        isOpen ? "text-[#00715D]" : "text-[#1A2E35]"
-                      }`}
+                      className={`${nunito.className} text-[16px] md:text-lg font-bold transition-colors duration-300 ${isOpen ? "text-[#00715D]" : "text-[#1A2E35]"
+                        }`}
                     >
                       {item.question}
                     </h3>
 
                     <span
-                      className={`w-10 h-10 flex items-center justify-center rounded-full transition-all duration-500 flex-shrink-0 ${
-                        isOpen
+                      className={`w-10 h-10 flex items-center justify-center rounded-full transition-all duration-500 flex-shrink-0 ${isOpen
                           ? "bg-[#00715D] text-white rotate-180"
                           : "bg-gray-100 text-[#00715D]"
-                      }`}
+                        }`}
                     >
                       {isOpen ? (
                         <FiMinus className="w-5 h-5" />
@@ -126,11 +122,10 @@ export default function FAQSection() {
 
                   {/* ANSWER WRAPPER WITH SMOOTH HEIGHT TRANSITION */}
                   <div
-                    className={`grid transition-all duration-500 ease-in-out ${
-                      isOpen
+                    className={`grid transition-all duration-500 ease-in-out ${isOpen
                         ? "grid-rows-[1fr] opacity-100"
                         : "grid-rows-[0fr] opacity-0"
-                    }`}
+                      }`}
                   >
                     <div className="overflow-hidden">
                       <div className="px-6 pb-6 md:px-8 md:pb-8">

@@ -8,10 +8,10 @@ import {
     FaPinterestP,
     FaInstagram,
 } from "react-icons/fa";
-import { Nunito, Manrope } from "next/font/google";
+import { Nunito, Cabin } from "next/font/google";
 
 const nunito = Nunito({ subsets: ["latin"], weight: ["400", "700", "800"] });
-const manrope = Manrope({
+const cabin = Cabin({
     subsets: ["latin"],
     weight: ["400", "500", "600", "700"],
 });
@@ -19,21 +19,27 @@ const manrope = Manrope({
 export default function Footer() {
     return (
         <footer
-            className={`${manrope.className} w-full bg-[#0a7061] text-white pt-8 pb-0`}
+            className={`${cabin.className} w-full bg-[#0a7061] text-white pt-8 pb-0`}
         >
             {/* TOP SECTION */}
-            <div className="px-8 md:px-20 grid grid-cols-1 md:grid-cols-2 gap-8 pb-6">
+            <div className="px-6 md:px-20 grid grid-cols-1 md:grid-cols-2 gap-8 pb-6">
                 {/* LEFT SIDE */}
-                <div className="flex flex-col items-center md:items-start text-center md:text-left pl-10 md:pl-16 lg:pl-20">
-                    {/* LOGO */}
-                    <div className="relative w-full max-w-[440px] h-[100px] md:h-[120px] mb-6">
+                <div className="flex flex-col items-start text-left pl-2 md:pl-16 lg:pl-20">
+                    {/* LOGO WITH WHITE BLUR EFFECT */}
+                    {/* <div className="relative mb-10 w-fit group"> */}
+                    {/* Soft Glass Blur Background */}
+                    {/* <div className="absolute -inset-4 bg-white/10 backdrop-blur-md rounded-[32px] border border-white/20 shadow-xl transition-all duration-500"></div> */}
+
+                    <div className="relative w-[300px] md:w-[450px] h-[80px] md:h-[110px]">
                         <Image
-                            src="/Images/ASPGF_Logo.webp"
+                            src="/Images/aspgf-logo.png"
                             alt="Logo"
                             fill
                             className="object-contain object-left"
+                            priority
                         />
                     </div>
+                    {/* </div> */}
 
                     {/* DESCRIPTION */}
                     <p className="max-w-xl text-[18px] leading-relaxed mb-6 opacity-90 font-medium">
@@ -42,7 +48,7 @@ export default function Footer() {
                     </p>
 
                     {/* SOCIAL ICONS */}
-                    <div className="flex items-center gap-4">
+                    <div className="flex items-center justify-center md:justify-start gap-4 w-full md:w-auto">
                         {[FaTwitter, FaFacebookF, FaPinterestP, FaInstagram].map(
                             (Icon, i) => (
                                 <div

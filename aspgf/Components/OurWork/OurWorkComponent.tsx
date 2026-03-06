@@ -1,13 +1,12 @@
 "use client";
 
 import React, { useState } from "react";
-import { Manrope, Caveat, Cabin } from "next/font/google";
+import { Caveat, Cabin } from "next/font/google";
 import OurWorkSidebar from "./OurWorkSidebar";
 import OurWorkContent from "./OurWorkContent";
 
-const manrope = Manrope({ subsets: ["latin"], weight: ["400", "500", "600", "700"] });
 const caveat = Caveat({ subsets: ["latin"] });
-const cabin = Cabin({ subsets: ["latin"] });
+const cabin = Cabin({ subsets: ["latin"], weight: ["400", "500", "600", "700"] });
 
 export default function OurWorkComponent() {
     const [activeCategory, setActiveCategory] = useState("All Category");

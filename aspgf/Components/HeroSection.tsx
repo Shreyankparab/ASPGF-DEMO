@@ -1,13 +1,13 @@
 "use client";
 
 import Image from "next/image";
-import { Caveat, Nunito, Manrope } from "next/font/google";
+import { Caveat, Nunito, Cabin } from "next/font/google";
 import React, { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 
 const caveat = Caveat({ subsets: ["latin"], weight: ["400", "700"] });
 const nunito = Nunito({ subsets: ["latin"], weight: ["400", "700", "800"] });
-const manrope = Manrope({
+const cabin = Cabin({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
 });
@@ -67,7 +67,7 @@ const HeroSection: React.FC = () => {
     <section className="relative w-full h-[90vh] flex items-center">
       {/* BACKGROUND IMAGE */}
       <Image
-        src="/Images/image8.svg"
+        src="/Images/Hero.webp"
         alt="Hero Background"
         fill
         priority
@@ -97,7 +97,7 @@ const HeroSection: React.FC = () => {
           {/* DESCRIPTION */}
           <p
             ref={descRef}
-            className={`${manrope.className} text-xl text-white mt-6 font-medium opacity-90 leading-relaxed`}
+            className={`${cabin.className} text-xl text-white mt-6 font-medium opacity-90 leading-relaxed`}
           >
             Working together to uplift communities and create lasting change.
           </p>
@@ -105,7 +105,7 @@ const HeroSection: React.FC = () => {
           {/* BUTTON */}
           <div ref={buttonRef} className="mt-10">
             <button
-              className={`${manrope.className} px-10 py-4 font-extrabold text-white rounded-full text-lg bg-gradient-to-r from-[#006e57] to-[#00b874] hover:shadow-[0_8px_30px_rgb(0,110,87,0.4)] transition-all duration-300 transform hover:-translate-y-0.5 tracking-wider`}
+              className={`${cabin.className} px-10 py-4 font-extrabold text-white rounded-full text-lg bg-gradient-to-r from-[#006e57] to-[#00b874] hover:shadow-[0_8px_30px_rgb(0,110,87,0.4)] transition-all duration-300 transform hover:-translate-y-0.5 tracking-wider`}
             >
               DISCOVER MORE
             </button>

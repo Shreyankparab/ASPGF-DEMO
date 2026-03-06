@@ -2,11 +2,10 @@
 
 import React from "react";
 import { Search, ChevronDown } from "lucide-react";
-import { Manrope, Nunito, Cabin } from "next/font/google";
+import { Nunito, Cabin } from "next/font/google";
 
-const manrope = Manrope({ subsets: ["latin"], weight: ["400", "500", "600", "700"] });
 const nunito = Nunito({ subsets: ["latin"], weight: ["400", "700", "800"] });
-const cabin = Cabin({ subsets: ["latin"] });
+const cabin = Cabin({ subsets: ["latin"], weight: ["400", "500", "600", "700"] });
 
 import { workCategories } from "@/data/ourWorkData";
 
