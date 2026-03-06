@@ -4,8 +4,7 @@ import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Phone, Mail, MapPin } from "lucide-react";
-import { FiMenu, FiX } from "react-icons/fi";
+import { Phone, Mail, MapPin, Menu, X } from "lucide-react";
 import { Nunito, Manrope } from "next/font/google";
 
 const nunito = Nunito({ subsets: ["latin"], weight: ["400", "700", "800"] });
@@ -142,7 +141,7 @@ export function Navbar() {
                     onClick={() => setIsMenuOpen(!isMenuOpen)}
                     className="p-2 text-[#00735C] hover:bg-gray-100 rounded-lg transition-all"
                 >
-                    {isMenuOpen ? <FiX size={28} /> : <FiMenu size={28} />}
+                    {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
                 </button>
             </div>
 
