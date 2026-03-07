@@ -36,31 +36,28 @@ export default function Footer() {
             {/* TOP SECTION */}
             <div className="px-6 md:px-20 grid grid-cols-1 md:grid-cols-2 gap-8 pb-6">
                 {/* LEFT SIDE */}
-                <div className="flex flex-col items-start text-left pl-2 md:pl-16 lg:pl-20">
-                    {/* LOGO WITH WHITE BLUR EFFECT */}
-                    {/* <div className="relative mb-10 w-fit group"> */}
-                    {/* Soft Glass Blur Background */}
-                    {/* <div className="absolute -inset-4 bg-white/10 backdrop-blur-md rounded-[32px] border border-white/20 shadow-xl transition-all duration-500"></div> */}
+                <div className="flex flex-col items-center text-center pl-2 md:pl-16 lg:pl-20">
 
-                    <div className="relative w-[300px] md:w-[450px] h-[80px] md:h-[110px]">
+
+                    <div className="relative w-[300px] md:w-[450px] h-[80px] md:h-[110px] mx-auto">
                         <Image
                             src="/Images/aspgf-logo.png"
                             alt="Logo"
                             fill
-                            className="object-contain object-left"
+                            className="object-contain"
                             priority
                         />
                     </div>
                     {/* </div> */}
 
                     {/* DESCRIPTION */}
-                    <p className="max-w-xl text-[18px] leading-relaxed mb-6 opacity-90 font-medium">
+                    <p className="max-w-xl text-[18px] leading-relaxed mb-6 opacity-90 font-medium text-center">
                         Committed to education, community outreach, and inclusive social
                         impact through structured initiatives
                     </p>
 
                     {/* SOCIAL ICONS */}
-                    <div className="flex items-center justify-center md:justify-start gap-4 w-full md:w-auto">
+                    <div className="flex items-center justify-center gap-4 w-full">
                         {[FaTwitter, FaFacebookF, FaPinterestP, FaInstagram].map(
                             (Icon, i) => (
                                 <div

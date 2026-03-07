@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -25,9 +25,37 @@ export function Navbar() {
         { name: "Impact", href: "/Impact" },
     ];
 
+    const [isVisible, setIsVisible] = useState(true);
+    const [lastScrollY, setLastScrollY] = useState(0);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            if (typeof window !== "undefined") {
+                const currentScrollY = window.scrollY;
+
+                // Threshold to prevent flickering (e.g., 50px)
+                if (Math.abs(currentScrollY - lastScrollY) < 10) return;
+
+                if (window.innerWidth >= 768) {
+                    if (currentScrollY > lastScrollY && currentScrollY > 150) {
+                        setIsVisible(false); // Scrolling down
+                    } else {
+                        setIsVisible(true); // Scrolling up
+                    }
+                    setLastScrollY(currentScrollY);
+                } else {
+                    setIsVisible(true);
+                }
+            }
+        };
+
+        window.addEventListener("scroll", handleScroll, { passive: true });
+        return () => window.removeEventListener("scroll", handleScroll);
+    }, [lastScrollY]);
+
     return (
         <header
-            className={`${cabin.className} w-full bg-white border-b border-gray-100`}
+            className={`${cabin.className} w-full bg-white border-b border-gray-100 md:fixed top-0 left-0 right-0 z-[1000] transition-transform duration-500 ease-in-out ${isVisible ? "translate-y-0" : "md:-translate-y-full"}`}
         >
             {/* ================= TOP BAR ================= */}
             <div className="hidden md:flex max-w-[1440px] mx-auto px-4 lg:px-10 h-16 items-center justify-between">
@@ -46,15 +74,28 @@ export function Navbar() {
 
                 {/* CONTACT INFO */}
                 <div className="hidden lg:flex items-center gap-6 ml-auto text-[12px]">
+                    {/* CIN Number */}
+                    <div className="flex items-center gap-2">
+                        <div className="w-8 h-8 rounded-full bg-[#00715D]/10 flex items-center justify-center">
+                            <span className={`${nunito.className} text-[#00715D] font-black text-[10px]`}>CIN</span>
+                        </div>
+                        <div>
+                            <p className={`${nunito.className} text-gray-400 font-bold uppercase tracking-tighter`}>Corporate ID</p>
+                            <p className={`${cabin.className} font-extrabold text-[#1A2E35]`}>U85499PN2025NPL237590</p>
+                        </div>
+                    </div>
+
+                    <div className="h-8 w-px bg-gray-200" />
+
                     {/* Phone */}
                     <div className="flex items-center gap-2">
                         <Phone size={14} className="text-[#00715D]" />
                         <div>
-                            <p className="text-gray-400 font-medium">Helpline</p>
+                            <p className={`${nunito.className} text-gray-400 font-bold uppercase tracking-tighter`}>Helpline</p>
                             <p
-                                className={`${nunito.className} font-extrabold text-[#1A2E35]`}
+                                className={`${cabin.className} font-extrabold text-[#1A2E35]`}
                             >
-                                +91 45545 4545
+                                9684001643
                             </p>
                         </div>
                     </div>
@@ -65,11 +106,11 @@ export function Navbar() {
                     <div className="flex items-center gap-2">
                         <Mail size={14} className="text-[#00715D]" />
                         <div>
-                            <p className="text-gray-400 font-medium">Send email</p>
+                            <p className={`${nunito.className} text-gray-400 font-bold uppercase tracking-tighter`}>Send email</p>
                             <p
-                                className={`${nunito.className} font-extrabold text-[#1A2E35] uppercase`}
+                                className={`${cabin.className} font-extrabold text-[#1A2E35] lowercase`}
                             >
-                                needhelp@company.com
+                                project.director@aspgf.org
                             </p>
                         </div>
                     </div>
@@ -80,9 +121,9 @@ export function Navbar() {
                     <div className="flex items-center gap-2">
                         <MapPin size={14} className="text-[#00715D]" />
                         <div>
-                            <p className="text-gray-400 font-medium">Baner</p>
+                            <p className={`${nunito.className} text-gray-400 font-bold uppercase tracking-tighter`}>Baner</p>
                             <p
-                                className={`${nunito.className} font-extrabold text-[#1A2E35]`}
+                                className={`${cabin.className} font-extrabold text-[#1A2E35]`}
                             >
                                 Pune, India
                             </p>
@@ -182,11 +223,11 @@ export function Navbar() {
                         <div className="bg-gray-50 p-4 rounded-2xl space-y-3">
                             <div className="flex items-center gap-3 text-sm text-gray-500">
                                 <Phone size={16} className="text-[#00735C]" />
-                                <span className="font-bold">+91 45545 4545</span>
+                                <span className={`${cabin.className} font-bold`}>9684001643</span>
                             </div>
-                            <div className="flex items-center gap-3 text-sm text-gray-500 uppercase tracking-tighter">
+                            <div className="flex items-center gap-3 text-sm text-gray-500 lowercase tracking-tighter">
                                 <Mail size={16} className="text-[#00735C]" />
-                                <span className="font-bold">needhelp@company.com</span>
+                                <span className={`${cabin.className} font-bold`}>project.director@aspgf.org</span>
                             </div>
                         </div>
 
