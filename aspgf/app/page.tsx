@@ -7,10 +7,10 @@ import NewsSection from "@/Components/NewsSection";
 import FoundersSectionMain from "@/Components/FoundersSectionMain";
 import AboutSection from "@/Components/AboutSection";
 import WhatWeDoSection from "@/Components/WhatWeDoSection";
-// import FoundersSectionMain from "@/Components/FoundersSectionMain";
+import OurWorkSection from "@/Components/OurWorkSection";
 
 
-// import ContactUs from "@/app/contactUs/ContactUs";StatsSection 
+import ImpactSection from "@/Components/ImpactSection"; 
 
 export default function Page() {
   return (
@@ -27,7 +27,10 @@ export default function Page() {
       </section>
       <FoundersSectionMain />
       <NewsSection/>
+      <OurWorkSection/>
+      <ImpactSection/>
       <FAQSection />
+      
 
     </>
   );
