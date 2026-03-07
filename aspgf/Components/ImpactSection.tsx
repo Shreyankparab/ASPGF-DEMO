@@ -2,19 +2,21 @@
 
 import Image from "next/image";
 import { useState, useEffect, useRef, useCallback } from "react";
-import { Nunito, Manrope, Caveat } from "next/font/google";
+import { Nunito, Cabin, Caveat } from "next/font/google";
 import { FaPlay, FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import { videoStories } from "@/data/impactData";
 import gsap from "gsap";
+import { useRouter } from "next/navigation";
 
 const nunito = Nunito({ subsets: ["latin"], weight: ["400", "700", "800"] });
-const manrope = Manrope({
+const cabin = Cabin({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
 });
 const caveat = Caveat({ subsets: ["latin"], weight: ["400", "700"] });
 
 export default function ImpactSection() {
+  const router = useRouter();
   const [activeIndex, setActiveIndex] = useState(0);
   const [activeVideo, setActiveVideo] = useState<string | null>(null);
   const sliderRef = useRef<HTMLDivElement>(null);
@@ -93,11 +95,20 @@ export default function ImpactSection() {
             </div>
 
             <p
-              className={`${manrope.className} text-gray-500 text-[17px] leading-relaxed max-w-[400px] opacity-90`}
+              className={`${cabin.className} text-gray-500 text-[17px] leading-relaxed max-w-[400px] opacity-90`}
             >
               Real stories from those who have witnessed meaningful change
               through our initiatives.
             </p>
+            {/* BUTTON */}
+            <div className="mt-10">
+              <button
+                onClick={() => router.push("/Impact")}
+                className={`${cabin.className} cursor-pointer px-10 py-4 font-extrabold text-white rounded-full text-lg bg-gradient-to-r from-[#006e57] to-[#00b874] hover:shadow-[0_8px_30px_rgb(0,110,87,0.4)] transition-all duration-300 transform hover:-translate-y-0.5 tracking-wider  `}
+              >
+              Explore More
+              </button>
+            </div>
           </div>
 
           {/* RIGHT SLIDER WRAPPER */}
@@ -155,7 +166,7 @@ export default function ImpactSection() {
                       <div className="w-full md:w-[55%] p-6 md:p-10 flex flex-col justify-center text-white">
                         <div className="mb-4 md:mb-6">
                           <p
-                            className={`${manrope.className} text-[13px] md:text-[15px] lg:text-[16px] leading-[1.5] md:leading-[1.6] opacity-90 font-medium italic`}
+                            className={`${cabin.className} text-[13px] md:text-[15px] lg:text-[16px] leading-[1.5] md:leading-[1.6] opacity-90 font-medium italic`}
                           >
                             "{story.description}"
                           </p>
@@ -167,7 +178,7 @@ export default function ImpactSection() {
                             {story.name}
                           </h4>
                           <p
-                            className={`${manrope.className} text-gray-400 text-[11px] md:text-[13px] font-medium opacity-80 mt-1 uppercase tracking-widest`}
+                            className={`${cabin.className} text-gray-400 text-[11px] md:text-[13px] font-medium opacity-80 mt-1 uppercase tracking-widest`}
                           >
                             {story.designation}
                           </p>
