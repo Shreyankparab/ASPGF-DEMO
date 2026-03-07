@@ -10,7 +10,7 @@ import WhatWeDoSection from "@/Components/WhatWeDoSection";
 import OurWorkSection from "@/Components/OurWorkSection";
 
 
-import ImpactSection from "@/Components/ImpactSection"; 
+import ImpactSection from "@/Components/ImpactSection";
 
 export default function Page() {
   return (
@@ -25,12 +25,13 @@ export default function Page() {
           <StatsSection />
         </div>
       </section>
+      <OurWorkSection />
+
       <FoundersSectionMain />
-      <NewsSection/>
-      <OurWorkSection/>
-      <ImpactSection/>
+      <NewsSection />
+      <ImpactSection />
       <FAQSection />
-      
+
 
     </>
   );

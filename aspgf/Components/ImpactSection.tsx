@@ -2,13 +2,13 @@
 
 import Image from "next/image";
 import { useState, useEffect, useRef, useCallback } from "react";
-import { Nunito, Manrope, Caveat } from "next/font/google";
+import { Nunito, Cabin, Caveat } from "next/font/google";
 import { FaPlay, FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import { videoStories } from "@/data/impactData";
 import gsap from "gsap";
 
 const nunito = Nunito({ subsets: ["latin"], weight: ["400", "700", "800"] });
-const manrope = Manrope({
+const cabin = Cabin({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
 });
@@ -93,7 +93,7 @@ export default function ImpactSection() {
             </div>
 
             <p
-              className={`${manrope.className} text-gray-500 text-[17px] leading-relaxed max-w-[400px] opacity-90`}
+              className={`${cabin.className} text-gray-500 text-[17px] leading-relaxed max-w-[400px] opacity-90`}
             >
               Real stories from those who have witnessed meaningful change
               through our initiatives.
@@ -155,7 +155,7 @@ export default function ImpactSection() {
                       <div className="w-full md:w-[55%] p-6 md:p-10 flex flex-col justify-center text-white">
                         <div className="mb-4 md:mb-6">
                           <p
-                            className={`${manrope.className} text-[13px] md:text-[15px] lg:text-[16px] leading-[1.5] md:leading-[1.6] opacity-90 font-medium italic`}
+                            className={`${cabin.className} text-[13px] md:text-[15px] lg:text-[16px] leading-[1.5] md:leading-[1.6] opacity-90 font-medium italic`}
                           >
                             "{story.description}"
                           </p>
@@ -167,7 +167,7 @@ export default function ImpactSection() {
                             {story.name}
                           </h4>
                           <p
-                            className={`${manrope.className} text-gray-400 text-[11px] md:text-[13px] font-medium opacity-80 mt-1 uppercase tracking-widest`}
+                            className={`${cabin.className} text-gray-400 text-[11px] md:text-[13px] font-medium opacity-80 mt-1 uppercase tracking-widest`}
                           >
                             {story.designation}
                           </p>
