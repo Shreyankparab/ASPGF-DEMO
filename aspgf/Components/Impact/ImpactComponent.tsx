@@ -3,7 +3,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { Caveat, Nunito, Cabin } from "next/font/google";
-import { MapPin, Play, X, ChevronLeft, ChevronRight } from "lucide-react";
+import { MapPin, Play, X, ChevronLeft, ChevronRight, Info } from "lucide-react";
 import StatsSection from "../StatsSection";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -20,6 +20,19 @@ type VideoStory = typeof videoStories[0];
 export default function ImpactComponent() {
     const sectionRef = useRef(null);
     const [activeVideo, setActiveVideo] = useState<VideoStory | null>(null);
+    const [showSidebar, setShowSidebar] = useState(true);
+
+    /* PREVENT BODY SCROLL WHEN MODAL IS OPEN */
+    useEffect(() => {
+        if (activeVideo) {
+            document.body.style.overflow = "hidden";
+        } else {
+            document.body.style.overflow = "auto";
+        }
+        return () => {
+            document.body.style.overflow = "auto";
+        };
+    }, [activeVideo]);
 
     const featuredVideo = videoStories.find(v => v.isFeatured);
     const stackedVideos = videoStories.filter(v => v.id === 2 || v.id === 3);
@@ -233,25 +246,35 @@ export default function ImpactComponent() {
                 <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/95 animate-in fade-in duration-300 backdrop-blur-md">
                     <div className="w-full h-full max-w-[1600px] flex flex-col p-4 md:p-8 relative">
                         {/* Header */}
-                        <div className="flex justify-between items-center mb-6">
-                            <div className="flex flex-col">
-                                <span className={`${caveat.className} text-[#00735C] text-xl font-bold italic`}>Now Playing</span>
-                                <h2 className={`${nunito.className} text-white text-xl md:text-3xl font-extrabold line-clamp-1`}>
+                        <div className="flex justify-between items-center mb-6 gap-4">
+                            <div className="flex flex-col min-w-0 flex-1">
+                                <span className={`${caveat.className} text-[#00735C] text-xl font-bold italic`}>Impact Stories</span>
+                                <h2 className={`${nunito.className} text-white text-xl md:text-3xl font-extrabold leading-tight`}>
                                     {activeVideo.title}
                                 </h2>
                             </div>
-                            <button
-                                onClick={() => setActiveVideo(null)}
-                                className="text-white/60 hover:text-white transition-colors p-2 bg-white/10 rounded-full hover:bg-white/20"
-                            >
-                                <X size={32} />
-                            </button>
+                            <div className="flex items-center gap-3">
+                                <button
+                                    onClick={() => setShowSidebar(!showSidebar)}
+                                    className={`p-3 rounded-full transition-all hover:scale-110 active:scale-95 ${showSidebar ? "bg-[#00735C] text-black" : "bg-white/10 text-white"}`}
+                                    title="Toggle Stories"
+                                >
+                                    <Info size={16} className="md:w-6 md:h-6" />
+                                </button>
+                                <button
+                                    onClick={() => setActiveVideo(null)}
+                                    className="text-white/60 hover:text-white transition-colors p-3 bg-white/10 rounded-full hover:bg-red-500/80 group"
+                                    title="Close View"
+                                >
+                                    <X size={24} className="md:w-8 md:h-8 group-rotate-90 transition-transform duration-300" />
+                                </button>
+                            </div>
                         </div>
 
                         {/* Main Content Area */}
-                        <div className="flex-1 flex flex-col lg:flex-row gap-8 overflow-hidden">
-                            {/* Left: Player Section (75%) */}
-                            <div className="lg:w-3/4 flex flex-col gap-4">
+                        <div className="flex-1 flex flex-col lg:flex-row gap-8 overflow-hidden items-center justify-center">
+                            {/* Left: Player Section */}
+                            <div className={`transition-all duration-500 ease-in-out flex flex-col gap-4 ${showSidebar ? "lg:w-3/4" : "lg:w-full"}`}>
                                 <div className="w-full aspect-video bg-black rounded-2xl overflow-hidden shadow-2xl border border-white/10 relative">
                                     <iframe
                                         src={getYoutubeEmbedUrl(activeVideo.videoUrl) || ""}
@@ -272,11 +295,20 @@ export default function ImpactComponent() {
                                 </div>
                             </div>
 
-                            {/* Right: Sidebar Section (25%) */}
-                            <div className="lg:w-1/4 flex flex-col h-full bg-white/5 rounded-2xl border border-white/10 overflow-hidden">
-                                <div className="p-5 border-b border-white/10 flex items-center gap-3">
-                                    <Play size={20} className="text-[#00735C]" fill="currentColor" />
-                                    <h3 className={`${nunito.className} text-white font-bold text-lg`}>More Stories</h3>
+                            {/* Right: Sidebar Section */}
+                            <div className={`transition-all duration-500 ease-in-out flex flex-col bg-white/5 rounded-2xl border border-white/10 overflow-hidden ${showSidebar ? "lg:w-1/4 opacity-100" : "w-0 opacity-0 pointer-events-none border-none ml-[-2rem]"}`}>
+                                <div className="p-5 border-b border-white/10 flex items-center justify-between">
+                                    <div className="flex items-center gap-3 text-[#00735C]">
+                                        <Play size={20} fill="currentColor" />
+                                        <h3 className={`${nunito.className} text-white font-bold text-lg`}>More Stories</h3>
+                                    </div>
+                                    <div className="flex items-center gap-2">
+                                        <X
+                                            size={16}
+                                            className="text-white/30 cursor-pointer hover:text-red-500 transition-colors"
+                                            onClick={() => setShowSidebar(false)}
+                                        />
+                                    </div>
                                 </div>
                                 <div className="flex-1 overflow-y-auto p-4 custom-scrollbar">
                                     <div className="flex flex-col gap-4">
