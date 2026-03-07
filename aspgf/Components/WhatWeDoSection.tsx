@@ -111,17 +111,8 @@ export default function WhatWeDoSection() {
         <div ref={leftRef}>
           {/* WHAT WE DO TAG */}
           <div className="flex items-center gap-3 mb-4">
-            <div className="relative w-7 h-7 flex-shrink-0 flex items-center justify-center">
-              <Image
-                src="/icon.svg"
-                alt="What we do icon"
-                width={24}
-                height={24}
-                className="object-contain"
-              />
-            </div>
             <p
-              className={`${caveat.className} text-[#0b6a52] font-bold text-[24px] mt-1`}
+              className={`${caveat.className} text-[#6f7775] font-bold text-[24px] mt-1`}
             >
               What We Do
             </p>
@@ -135,12 +126,12 @@ export default function WhatWeDoSection() {
           </h2>
 
           {/* TABS */}
-          <div className="flex flex-wrap gap-4 mb-8">
+          <div className="grid grid-cols-3 gap-3 mb-8 md:flex md:flex-wrap md:gap-4">
             {tabs.map((tab) => (
               <button
                 key={tab}
                 onClick={() => setActiveTab(tab)}
-                className={`${cabin.className} px-8 py-3 rounded-full font-extrabold text-[15px] tracking-wide transition-all duration-300 shadow-sm ${
+                className={`${cabin.className} w-full md:w-auto px-4 md:px-8 py-3 rounded-full font-extrabold text-[14px] md:text-[15px] tracking-wide transition-all duration-300 shadow-sm ${
                   activeTab === tab
                     ? "bg-[#0b6a52] text-white shadow-md"
                     : "bg-white text-[#1A2E35] border border-gray-200 hover:bg-gray-50"
@@ -181,14 +172,14 @@ export default function WhatWeDoSection() {
         {/* RIGHT SIDE IMAGES */}
         <div ref={rightRef} className="relative">
           {/* DOT PATTERN */}
-          <div className="absolute -bottom-16 -left-16 opacity-30 -z-10">
+          {/* <div className="absolute -bottom-16 -left-16 opacity-30 -z-10">
             <Image
               src="/Images/dots-pattern.png"
               alt="dots"
               width={160}
               height={160}
             />
-          </div>
+          </div> */}
 
           {/* Remaining UI unchanged */}
           <div className="relative flex items-center justify-center lg:justify-start">

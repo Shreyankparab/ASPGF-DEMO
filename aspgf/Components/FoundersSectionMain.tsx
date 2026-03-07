@@ -44,6 +44,7 @@ export default function FoundersSection() {
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 function AnimatedCard({ name1, name2, role, experience, image }: any) {
   const cardRef = useRef<HTMLDivElement | null>(null);
+  const [isOpen, setIsOpen] = React.useState(false);
 
   // Entry on scroll animation
   useEffect(() => {
@@ -59,9 +60,17 @@ function AnimatedCard({ name1, name2, role, experience, image }: any) {
     if (cardRef.current) observer.observe(cardRef.current);
   }, []);
 
+  // detect mobile click
+  const handleClick = () => {
+    if (window.innerWidth < 768) {
+      setIsOpen(!isOpen);
+    }
+  };
+
   return (
     <div
       ref={cardRef}
+      onClick={handleClick}
       className="
         opacity-100
         relative group w-[330px] md:w-[380px] rounded-3xl overflow-hidden shadow-xl cursor-pointer
@@ -82,75 +91,65 @@ function AnimatedCard({ name1, name2, role, experience, image }: any) {
         className="
           absolute inset-0
           bg-gradient-to-t from-black/70 via-black/20 to-transparent
-          opacity-100 group-hover:opacity-100
+          opacity-100
           transition-all duration-700
         "
       />
 
-      {/* DEFAULT TEXT OVERLAY — NAME & ROLE (ALWAYS VISIBLE) */}
+      {/* DEFAULT TEXT */}
       <div
-        className="
+        className={`
           absolute bottom-0 left-0 w-full
           p-6 text-white text-center
           bg-transparent backdrop-blur-none
-          opacity-100 group-hover:opacity-0
           transition-all duration-700
-        "
+          ${isOpen ? "opacity-0" : "opacity-100 group-hover:opacity-0"}
+        `}
       >
-        <h3
-          className={`${nunito.className} text-[24px] font-extrabold leading-tight tracking-wide`}
-        >
+        <h3 className={`${nunito.className} text-[24px] font-extrabold`}>
           {name1}
         </h3>
 
         {name2 && (
-          <h3
-            className={`${nunito.className} text-[24px] font-extrabold leading-tight tracking-wide`}
-          >
+          <h3 className={`${nunito.className} text-[24px] font-extrabold`}>
             {name2}
           </h3>
         )}
 
-        <p
-          className={`${manrope.className} text-[16px] font-bold tracking-wide mt-2`}
-        >
+        <p className={`${manrope.className} text-[16px] font-bold mt-2`}>
           {role}
         </p>
       </div>
 
-      {/* HOVER TEXT OVERLAY — FULL DETAILS */}
+      {/* HOVER / CLICK OVERLAY */}
       <div
-        className="
+        className={`
           absolute bottom-0 left-0 w-full
           p-6 text-white text-center
           bg-white/20 backdrop-blur-xl
-          opacity-0 translate-y-full group-hover:translate-y-0 group-hover:opacity-100
           transform-gpu transition-all duration-500 ease-out
-        "
+          ${
+            isOpen
+              ? "opacity-100 translate-y-0"
+              : "opacity-0 translate-y-full group-hover:translate-y-0 group-hover:opacity-100"
+          }
+        `}
       >
-        <h3
-          className={`${nunito.className} text-[26px] font-extrabold leading-tight tracking-wide`}
-        >
+        <h3 className={`${nunito.className} text-[26px] font-extrabold`}>
           {name1}
         </h3>
 
         {name2 && (
-          <h3
-            className={`${nunito.className} text-[26px] font-extrabold leading-tight tracking-wide`}
-          >
+          <h3 className={`${nunito.className} text-[26px] font-extrabold`}>
             {name2}
           </h3>
         )}
 
-        <p
-          className={`${manrope.className} text-[20px] font-bold tracking-wide mt-2`}
-        >
+        <p className={`${manrope.className} text-[20px] font-bold mt-2`}>
           {role}
         </p>
 
-        <p
-          className={`${manrope.className} text-[14px] font-medium mt-3 opacity-90 leading-relaxed`}
-        >
+        <p className={`${manrope.className} text-[14px] mt-3 opacity-90`}>
           {experience}
         </p>
 

@@ -3,7 +3,7 @@ import FAQSection from "@/Components/FAQSection";
 
 import FocusArea from "@/Components/FocusArea";
 import StatsSection from "@/Components/StatsSection";
-
+import NewsSection from "@/Components/NewsSection";
 import FoundersSectionMain from "@/Components/FoundersSectionMain";
 import AboutSection from "@/Components/AboutSection";
 import WhatWeDoSection from "@/Components/WhatWeDoSection";
@@ -26,6 +26,7 @@ export default function Page() {
         </div>
       </section>
       <FoundersSectionMain />
+      <NewsSection/>
       <FAQSection />
 
     </>
