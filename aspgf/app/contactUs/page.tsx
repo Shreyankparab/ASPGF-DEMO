@@ -490,7 +490,7 @@ export default function ContactPage() {
                             referrerPolicy="no-referrer-when-downgrade"
                             className="grayscale-[0.1] contrast-[0.9]"
                         ></iframe>
-                        <div className="absolute bottom-2 left-1/2 -translate-x-1/2 sm:translate-x-0 sm:left-auto sm:right-5 w-[90%] sm:w-[280px] bg-white/95 backdrop-blur-md p-4 rounded-2xl flex items-center justify-between shadow-lg">
+                        <div className="absolute bottom-2 left-1/2 -translate-x-1/2 sm:translate-x-0 sm:left-auto sm:right-5 w-[90%] sm:w-[280px] bg-white/95 backdrop-blur-md p-4 rounded-2xl flex items-center justify-between shadow-lg pb-12">
                             <div>
                                 <p className={`${cabin.className} text-[13px] font-extrabold text-[#1A2E35]`}>Solitaire Business Hub</p>
                                 <div className="mt-0.5 flex items-center gap-1.5">

@@ -43,7 +43,7 @@ const HeroSection: React.FC = () => {
       {/* BACKGROUND IMAGE */}
       <div className="absolute inset-0 z-0 hero-bg">
         <Image
-          src="/Images/Hero.webp"
+          src="/Images/hero5.svg"
           alt="Hero Background"
           fill
           priority
@@ -81,7 +81,7 @@ const HeroSection: React.FC = () => {
           {/* BUTTON */}
           <div className="mt-10">
             <button
-              className={`${cabin.className} px-10 py-4 font-extrabold text-white rounded-full text-lg bg-gradient-to-r from-[#006e57] to-[#00b874] hover:shadow-[0_8px_30px_rgb(0,110,87,0.4)] transition-all duration-300 transform hover:-translate-y-0.5 tracking-wider`}
+              className={`${cabin.className} cursor-pointer px-10 py-4 font-extrabold text-white rounded-full text-lg bg-gradient-to-r from-[#006e57] to-[#00b874] hover:shadow-[0_8px_30px_rgb(0,110,87,0.4)] transition-all duration-300 transform hover:-translate-y-0.5 tracking-wider`}
             >
               DISCOVER MORE
             </button>

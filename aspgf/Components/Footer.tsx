@@ -37,8 +37,6 @@ export default function Footer() {
             <div className="px-6 md:px-20 grid grid-cols-1 md:grid-cols-2 gap-8 pb-6">
                 {/* LEFT SIDE */}
                 <div className="flex flex-col items-center text-center pl-2 md:pl-16 lg:pl-20">
-
-
                     <div className="relative w-[300px] md:w-[450px] h-[80px] md:h-[110px] mx-auto">
                         <Image
                             src="/Images/aspgf-logo.png"
@@ -48,7 +46,6 @@ export default function Footer() {
                             priority
                         />
                     </div>
-                    {/* </div> */}
 
                     {/* DESCRIPTION */}
                     <p className="max-w-xl text-[18px] leading-relaxed mb-6 opacity-90 font-medium text-center">

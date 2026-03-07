@@ -5,7 +5,11 @@ import Image from "next/image";
 import { Calendar, MapPin, X, ArrowLeft, ArrowRight } from "lucide-react";
 import { Caveat, Nunito, Cabin } from "next/font/google";
 import { newsData } from "@/data/newsData";
+
 import NewsModal from "./News/NewsModal";
+
+import { useRouter } from "next/navigation";
+
 
 const caveat = Caveat({ subsets: ["latin"], weight: ["400", "700"] });
 const nunito = Nunito({ subsets: ["latin"], weight: ["400", "700", "800"] });
@@ -15,6 +19,7 @@ const cabin = Cabin({
 });
 
 export default function NewsSection() {
+
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalInitialIndex, setModalInitialIndex] = useState(0);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
@@ -27,6 +32,57 @@ export default function NewsSection() {
       setCanScrollLeft(scrollLeft > 10);
       setCanScrollRight(scrollLeft + clientWidth < scrollWidth - 10);
     }
+
+  const router = useRouter();
+  const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
+  const [zoom, setZoom] = useState(1);
+  const [showInfo, setShowInfo] = useState(true);
+  const [panY, setPanY] = useState(0);
+  const [isDragging, setIsDragging] = useState(false);
+  const [startY, setStartY] = useState(0);
+
+  // Navigation handlers
+  const handlePrev = (e?: React.MouseEvent) => {
+    e?.stopPropagation();
+    setSelectedIndex((prev) =>
+      prev !== null ? (prev - 1 + newsData.length) % newsData.length : null,
+    );
+    setZoom(1);
+    setPanY(0);
+  };
+
+  const handleNext = (e?: React.MouseEvent) => {
+    e?.stopPropagation();
+    setSelectedIndex((prev) =>
+      prev !== null ? (prev + 1) % newsData.length : null,
+    );
+    setZoom(1);
+    setPanY(0);
+  };
+
+  const toggleZoom = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    const newZoom = zoom === 1 ? 1.5 : 1;
+    setZoom(newZoom);
+    if (newZoom === 1) setPanY(0);
+  };
+
+  // Drag handlers
+  const handleMouseDown = (e: React.MouseEvent) => {
+    if (zoom === 1) return;
+    setIsDragging(true);
+    setStartY(e.clientY - panY);
+  };
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (!isDragging || zoom === 1) return;
+    const newY = e.clientY - startY;
+    setPanY(newY);
+  };
+
+  const handleMouseUp = () => {
+    setIsDragging(false);
+
   };
 
   useEffect(() => {
@@ -91,9 +147,14 @@ export default function NewsSection() {
 
           <div className="hidden lg:block">
             <button
+
               className={`${cabin.className} mt-10 px-10 py-4 font-extrabold text-white rounded-full text-lg bg-gradient-to-r from-[#006e57] to-[#00b874] shadow-lg shadow-[#006e57]/20 hover:scale-105 transition-transform`}
+
+              onClick={() => router.push("/News")}
+              className={`${cabin.className} cursor-pointer mt-4 px-10 py-4 font-extrabold text-white rounded-full text-lg bg-gradient-to-r from-[#006e57] to-[#00b874] hover:shadow-[0_8px_30px_rgb(0,110,87,0.4)] transition-all duration-300 transform hover:-translate-y-0.5 tracking-wider  `}
+
             >
-              Discover More
+            Read More
             </button>
           </div>
         </div>
@@ -167,6 +228,8 @@ export default function NewsSection() {
       </div>
 
 
+
+
       {/* ------------------------------------------------- */}
 
       <style jsx>{`
@@ -211,7 +274,7 @@ export default function NewsSection() {
       />
     </section >
   );
-}
+}}
 
 function NewsCard({ card, onOpen }: any) {
   return (
@@ -258,3 +321,181 @@ function NewsCard({ card, onOpen }: any) {
     </div>
   );
 }
+
+
+// PREMIUM INTERACTIVE MODAL
+
+// {selectedNews && (
+//   <div
+//     className="fixed inset-0 z-[9999] flex flex-col md:flex-row bg-black/95 backdrop-blur-xl transition-all duration-500"
+//     onClick={() => setSelectedIndex(null)}
+//     onMouseMove={handleMouseMove}
+//     onMouseUp={handleMouseUp}
+//     onMouseLeave={handleMouseUp}
+//   >
+//     {/* Top Controls Bar */}
+//     {/* <div className="absolute top-0 inset-x-0 h-16 md:h-20 flex items-center justify-between px-4 md:px-12 z-[10005] bg-gradient-to-b from-black/80 to-transparent pointer-events-none">
+//       <div className="flex items-center gap-4 pointer-events-auto">
+//         <span
+//           className={`${cabin.className} text-white/50 text-xs md:text-sm font-medium`}
+//         >
+//           {selectedIndex! + 1} / {newsData.length}
+//         </span>
+//       </div>
+
+//       <div className="flex items-center gap-2 md:gap-3 pointer-events-auto">
+//         <button
+//           onClick={(e) => {
+//             e.stopPropagation();
+//             setShowInfo(!showInfo);
+//           }}
+//           className={`p-2.5 md:p-3 rounded-full transition-all hover:scale-110 active:scale-95 ${
+//             showInfo
+//               ? "bg-[#3ed0a6] text-black"
+//               : "bg-white/10 text-white"
+//           }`}
+//         >
+//           i
+//         </button>
+
+//         <button
+//           onClick={toggleZoom}
+//           className="p-2.5 md:p-3 rounded-full bg-white/10 hover:bg-white/20 text-white transition-all hover:scale-110 active:scale-95"
+//         >
+//           🔍
+//         </button>
+
+//         <button
+//           onClick={() => setSelectedIndex(null)}
+//           className="p-2.5 md:p-3 rounded-full bg-white/10 hover:bg-red-500/80 text-white transition-all hover:scale-110 active:scale-95"
+//         >
+//           <X size={22} />
+//         </button>
+//       </div>
+//     </div> */}
+
+//     {/* MAIN VIEWPORT */}
+//     <div className="relative flex-grow h-full flex items-center justify-center p-2 md:p-12 overflow-hidden select-none">
+//       {/* PREV */}
+//       <button
+//         onClick={handlePrev}
+//         className="absolute left-2 md:left-8 p-3 md:p-4 rounded-full bg-black/40 border border-white/10 text-white hover:bg-white/10 transition-all z-[10001]"
+//       >
+//         <ArrowLeft />
+//       </button>
+
+//       {/* NEXT */}
+//       <button
+//         onClick={handleNext}
+//         className="absolute right-2 md:right-8 p-3 md:p-4 rounded-full bg-black/40 border border-white/10 text-white hover:bg-white/10 transition-all z-[10001]"
+//       >
+//         <ArrowRight />
+//       </button>
+
+//       {/* Image Wrapper */}
+//       <div
+//         className={`relative w-full h-full transition-all duration-300 ease-out ${
+//           zoom > 1
+//             ? isDragging
+//               ? "cursor-grabbing"
+//               : "cursor-grab"
+//             : "cursor-zoom-in"
+//         }`}
+//         onClick={(e) => e.stopPropagation()}
+//         onDoubleClick={toggleZoom}
+//         onMouseDown={handleMouseDown}
+//         style={{
+//           transform: `scale(${zoom}) translateY(${panY}px)`,
+//         }}
+//       >
+//         <Image
+//           src={selectedNews.image}
+//           alt={selectedNews.title}
+//           fill
+//           className="object-contain pointer-events-none"
+//           priority
+//         />
+//       </div>
+//     </div>
+
+//     {/* SIDEBAR INFO */}
+//     <div
+//       className={`fixed md:relative bottom-0 right-0 h-[60vh] md:h-full bg-black/80 md:bg-white/5 backdrop-blur-3xl border-t md:border-t-0 md:border-l border-white/10 transition-all duration-500 ease-in-out z-[10004]
+// ${
+//   showInfo
+//     ? "translate-y-0 md:translate-x-0 w-full md:w-[450px]"
+//     : "translate-y-full md:translate-x-full w-full md:w-0 overflow-hidden"
+// }`}
+//       onClick={(e) => e.stopPropagation()}
+//     >
+//       <div className="p-6 md:p-12 h-full flex flex-col">
+//         <div className="flex-grow flex flex-col justify-center">
+//           <div className="flex items-center gap-4 mb-4">
+//             <span className="flex items-center gap-2 text-[#3ed0a6] text-xs font-bold">
+//               <Calendar size={14} /> {selectedNews.date}
+//             </span>
+
+//             <span className="flex items-center gap-2 text-white/50 text-xs font-bold">
+//               <MapPin size={14} /> {selectedNews.location}
+//             </span>
+//           </div>
+
+//           <h2
+//             className={`${nunito.className} text-white text-2xl md:text-4xl font-black mb-6`}
+//           >
+//             {selectedNews.title}
+//           </h2>
+
+//           {/* NEXT NEWS */}
+//           <div className="flex flex-col gap-6">
+//             <h3
+//               className={`${cabin.className} text-white/40 text-xs font-bold uppercase tracking-[0.2em]`}
+//             >
+//               Next News & Events
+//             </h3>
+
+//             <div className="flex flex-col gap-4 overflow-y-auto max-h-[40vh] pr-2">
+//               {newsData.map((item, idx) => {
+//                 if (idx === selectedIndex) return null;
+
+//                 return (
+//                   <div
+//                     key={idx}
+//                     onClick={() => {
+//                       setSelectedIndex(idx);
+//                       setZoom(1);
+//                       setPanY(0);
+//                     }}
+//                     className="flex items-center gap-4 p-3 rounded-2xl bg-white/5 border border-white/5 hover:bg-white/10 cursor-pointer"
+//                   >
+//                     <div className="relative w-16 h-16 rounded-xl overflow-hidden">
+//                       <Image
+//                         src={item.image}
+//                         alt={item.title}
+//                         fill
+//                         className="object-cover"
+//                       />
+//                     </div>
+
+//                     <div className="flex flex-col gap-1">
+//                       <span className="text-[#3ed0a6] text-[10px] font-bold uppercase">
+//                         {item.date}
+//                       </span>
+
+//                       <h4
+//                         className={`${nunito.className} text-white text-sm font-bold`}
+//                       >
+//                         {item.title}
+//                       </h4>
+//                     </div>
+//                   </div>
+//                 );
+//               })}
+//             </div>
+//           </div>
+//         </div>
+//       </div>
+//     </div>
+//   </div>
+// )}
+

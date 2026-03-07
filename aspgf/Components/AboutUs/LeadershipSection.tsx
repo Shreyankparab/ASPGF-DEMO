@@ -83,54 +83,32 @@ export default function LeadershipSection() {
                             </div>
                         </div>
 
-                        <div className="grid grid-cols-2 gap-x-12 gap-y-10">
-                            <div className="space-y-2">
-                                <h3 className={`${nunito.className} font-extrabold text-[16px] text-gray-900`}>
-                                    A Vision Rooted in Service
-                                </h3>
-                                <p className={`${cabin.className} text-[14px] text-gray-700 leading-relaxed`}>
-                                    Global Foundation was established with a deep commitment to
-                                    service and social responsibility. Our purpose is to uplift
-                                    underserved communities and ensure equal access to
-                                    opportunities for growth and dignity.
-                                </p>
-                            </div>
+                        <div className="flex flex-col gap-4">
+                            <p className={`${cabin.className} text-[16px] text-gray-700 leading-relaxed text-justify`}>
+                                <em>Every great change begins with a simple belief — that we can make
+                                    a difference. The <strong className="text-[#0a7061]">Anuja Sushant Patil Global Foundation</strong> is not just
+                                    an organization, it is a <strong className="text-[#0a7061]">movement to empower lives</strong> through
+                                    <strong className="text-[#0a7061]"> education, care, and opportunity</strong>.
+                                </em>
+                            </p>
 
-                            <div className="space-y-2">
-                                <h3 className={`${nunito.className} font-extrabold text-[16px] text-gray-900`}>
-                                    Empowering Lives Through Opportunity
-                                </h3>
-                                <p className={`${cabin.className} text-[14px] text-gray-700 leading-relaxed`}>
-                                    We believe empowerment begins with access — access to
-                                    education, healthcare, skill development, and sustainable
-                                    livelihood initiatives that enable individuals to shape their
-                                    own future.
-                                </p>
-                            </div>
+                            <p className={`${cabin.className} text-[16px] text-gray-700 leading-relaxed text-justify`}>
+                                Our vision is to create a society where <strong className="text-[#0a7061]">knowledge</strong> is not a privilege,
+                                but a right; where <strong className="text-[#0a7061]">helping the needful</strong> is not an act of charity, but a
+                                <strong className="text-[#0a7061]"> responsibility</strong> we all share. By <strong className="text-[#0a7061]">nurturing young minds</strong>, <strong className="text-[#0a7061]">supporting
+                                    communities</strong>, and <strong className="text-[#0a7061]">encouraging self-reliance</strong>, we aim to build a
+                                world where progress is <strong className="text-[#0a7061]">inclusive and sustainable</strong>.
+                            </p>
 
-                            <div className="space-y-2">
-                                <h3 className={`${nunito.className} font-extrabold text-[16px] text-gray-900`}>
-                                    Building Partnerships for Impact
-                                </h3>
-                                <p className={`${cabin.className} text-[14px] text-gray-700 leading-relaxed`}>
-                                    Collaboration is the cornerstone of meaningful change. Through
-                                    partnerships with communities, volunteers, and institutions,
-                                    we strengthen our ability to create measurable and lasting
-                                    impact.
-                                </p>
-                            </div>
-
-                            <div className="space-y-2">
-                                <h3 className={`${nunito.className} font-extrabold text-[16px] text-gray-900`}>
-                                    A Future Focused on Sustainability
-                                </h3>
-                                <p className={`${cabin.className} text-[14px] text-gray-700 leading-relaxed`}>
-                                    Our long-term vision centers on sustainable development —
-                                    fostering self-reliant communities, protecting the
-                                    environment, and nurturing leadership that drives positive
-                                    transformation for generations to come.
-                                </p>
-                            </div>
+                            <p className={`${cabin.className} text-[16px] text-gray-700 leading-relaxed text-justify italic border-l-4 border-teal-600 pl-8 pt-4 relative`}>
+                                <span className="absolute left-2 top-0 text-4xl text-black/20 font-serif leading-none">"</span>
+                                <em>I believe that <strong className="text-[#0a7061]">true success</strong> is measured not by what we achieve for
+                                    ourselves, but by what we <strong className="text-[#0a7061]">enable others to achieve</strong>. Through this
+                                    foundation, we strive to sow <strong className="text-[#0a7061]">seeds of hope, dignity, and growth</strong> that will inspire generations to
+                                    come.
+                                    <span className="inline-block translate-y-2 ml-1 text-4xl text-black/20 font-serif leading-none">"</span>
+                                </em>
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -143,60 +121,9 @@ export default function LeadershipSection() {
                         </h2>
                         <div className="h-1.5 w-32 bg-black rounded-full"></div>
                     </div>
-                    <div className="grid md:grid-cols-[1.2fr_0.8fr] gap-8 items-start">
-                        <div className="grid grid-cols-2 gap-x-12 gap-y-10">
-                            <div className="space-y-2">
-                                <h3 className={`${nunito.className} font-extrabold text-[16px] text-gray-900`}>
-                                    A Commitment to Purpose-Driven Change
-                                </h3>
-                                <p className={`${cabin.className} text-[14px] text-gray-700 leading-relaxed`}>
-                                    At Global Foundation, our mission begins with compassion and
-                                    responsibility. We are dedicated to building inclusive
-                                    communities where every individual, regardless of background,
-                                    has access to education, opportunity, and dignity.
-                                </p>
-                            </div>
-
-                            <div className="space-y-2">
-                                <h3 className={`${nunito.className} font-extrabold text-[16px] text-gray-900`}>
-                                    Empowering Communities Through Action
-                                </h3>
-                                <p className={`${cabin.className} text-[14px] text-gray-700 leading-relaxed`}>
-                                    We believe real change happens at the grassroots level.
-                                    Through community-driven initiatives, skill development
-                                    programs, and outreach activities, we empower individuals to
-                                    become catalysts of transformation within their own
-                                    communities.
-                                </p>
-                            </div>
-
-                            <div className="space-y-2">
-                                <h3 className={`${nunito.className} font-extrabold text-[16px] text-gray-900`}>
-                                    Guided by Integrity and Transparency
-                                </h3>
-                                <p className={`${cabin.className} text-[14px] text-gray-700 leading-relaxed`}>
-                                    Trust is the foundation of impact. We operate with complete
-                                    transparency, measurable outcomes, and ethical governance to
-                                    ensure that every effort contributes meaningfully toward
-                                    sustainable development.
-                                </p>
-                            </div>
-
-                            <div className="space-y-2">
-                                <h3 className={`${nunito.className} font-extrabold text-[16px] text-gray-900`}>
-                                    Building a Sustainable Future Together
-                                </h3>
-                                <p className={`${cabin.className} text-[14px] text-gray-700 leading-relaxed`}>
-                                    Our vision extends beyond short-term relief. We focus on
-                                    long-term solutions that create lasting social impact —
-                                    strengthening education, healthcare access, livelihood
-                                    opportunities, and environmental sustainability for
-                                    generations to come.
-                                </p>
-                            </div>
-                        </div>
+                    <div className="grid md:grid-cols-[0.8fr_1.2fr] gap-8 items-start">
+                        {/* Image Side */}
                         <div className="relative flex flex-col items-start">
-
                             <div className="relative group w-full aspect-square max-w-[400px]">
                                 {/* Trustworthy Badge - Floating Outside */}
                                 <div className="badge-trust absolute -top-3 -left-3 text-black bg-white px-3 py-2.5 rounded-full text-[10px] font-bold flex items-center gap-1.5 shadow-xl z-20 w-fit">
@@ -225,6 +152,36 @@ export default function LeadershipSection() {
                                 </h4>
                                 <p className={`${cabin.className} text-[14px] font-medium text-gray-600`}>Founder</p>
                             </div>
+                        </div>
+
+                        {/* Text Side */}
+                        <div className="flex flex-col gap-4">
+                            <p className={`${cabin.className} text-[16px] text-gray-700 leading-relaxed text-justify`}>
+                                At the heart of every great nation lies the <strong className="text-[#0a7061]">strength of its people</strong>,
+                                and that strength comes from <strong className="text-[#0a7061]">education, compassion, and
+                                    opportunities to grow</strong>. With this belief, the <strong className="text-[#0a7061]">Anuja Sushant Patil
+                                        Global Foundation</strong> was established as a humble step towards
+                                creating a society where <strong className="text-[#0a7061]">knowledge empowers</strong>, <strong className="text-[#0a7061]">kindness uplifts</strong>,
+                                and support reaches those who need it the most.
+                            </p>
+
+                            <p className={`${cabin.className} text-[16px] text-gray-700 leading-relaxed text-justify`}>
+                                <strong className="text-[#0a7061]">Education</strong> is not just about academics — it is about <strong className="text-[#0a7061]">shaping
+                                    confident, capable, and responsible individuals</strong> who can contribute
+                                positively to the world. We are committed to <strong className="text-[#0a7061]">nurturing young minds</strong>,
+                                <strong className="text-[#0a7061]"> supporting underprivileged communities</strong>, and building pathways
+                                where <strong className="text-[#0a7061]">hope transforms into reality</strong>.
+                            </p>
+
+                            <p className={`${cabin.className} text-[16px] text-gray-700 leading-relaxed text-justify italic border-l-4 border-teal-600 pl-8 pt-4 relative`}>
+                                <span className="absolute left-2 top-0 text-4xl text-black/20 font-serif leading-none">"</span>
+                                <em>Our mission goes <strong className="text-[#0a7061]">beyond charity</strong>; it is about <strong className="text-[#0a7061]">empowering people with dignity,
+                                    skills, and confidence</strong> to stand tall and lead a better tomorrow. Together,
+                                    with <strong className="text-[#0a7061]">collective effort and shared responsibility</strong>, we can create a future
+                                    where <strong className="text-[#0a7061]">no dream is left behind</strong> and no individual is left <br />unseen.
+                                    <span className="inline-block translate-y-2 ml-1 text-4xl text-black/20 font-serif leading-none">"</span>
+                                </em>
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -277,51 +234,31 @@ export default function LeadershipSection() {
                         </div>
 
                         {/* LEFT CONTENT (Moved to Right) */}
-                        <div className="grid grid-cols-2 gap-x-12 gap-y-10">
-                            <div className="space-y-2">
-                                <h3 className={`${nunito.className} font-extrabold text-[16px] text-gray-900`}>
-                                    Turning Vision into Measurable Impact
-                                </h3>
-                                <p className={`${cabin.className} text-[14px] text-gray-700 leading-relaxed`}>
-                                    At Global Foundation, our focus is on translating purpose into
-                                    practical action. Every initiative is designed to create
-                                    measurable outcomes that uplift communities and improve lives.
-                                </p>
-                            </div>
+                        <div className="flex flex-col gap-4">
+                            <p className={`${cabin.className} text-[16px] text-gray-700 leading-relaxed text-justify`}>
+                                <strong className="text-[#0a7061]">Mr. Shriram Chavan</strong> is the <strong className="text-[#0a7061]">Project Director</strong> at <strong className="text-[#0a7061]">Anuja Sushant
+                                    Patil Global Foundation</strong>, leading impactful initiatives in <strong className="text-[#0a7061]">education, healthcare, women empowerment, and rural development</strong>. With a strong commitment to <strong className="text-[#0a7061]">social welfare</strong>, he works to
+                                create <strong className="text-[#0a7061]">sustainable change</strong> and uplift communities through
+                                <strong className="text-[#0a7061]"> strategic planning and compassionate leadership</strong>.
+                            </p>
 
-                            <div className="space-y-2">
-                                <h3 className={`${nunito.className} font-extrabold text-[16px] text-gray-900`}>
-                                    Strengthening Systems for Sustainable Growth
-                                </h3>
-                                <p className={`${cabin.className} text-[14px] text-gray-700 leading-relaxed`}>
-                                    We build structured programs, transparent governance models,
-                                    and accountable systems that ensure long-term sustainability
-                                    across education, healthcare, livelihood, and environmental
-                                    development initiatives.
-                                </p>
-                            </div>
+                            <p className={`${cabin.className} text-[16px] text-gray-700 leading-relaxed text-justify`}>
+                                Our vision is to create a society where <strong className="text-[#0a7061]">knowledge</strong> is not a privilege,
+                                but a right; where <strong className="text-[#0a7061]">helping the needful</strong> is not an act of charity, but a
+                                <strong className="text-[#0a7061]"> responsibility</strong> we all share. By <strong className="text-[#0a7061]">nurturing young minds</strong>, <strong className="text-[#0a7061]">supporting
+                                    communities</strong>, and <strong className="text-[#0a7061]">encouraging self-reliance</strong>, we aim to build a
+                                world where progress is <strong className="text-[#0a7061]">inclusive and sustainable</strong>.
+                            </p>
 
-                            <div className="space-y-2">
-                                <h3 className={`${nunito.className} font-extrabold text-[16px] text-gray-900`}>
-                                    Community-Centered Leadership
-                                </h3>
-                                <p className={`${cabin.className} text-[14px] text-gray-700 leading-relaxed`}>
-                                    True development begins with listening. By collaborating with
-                                    local stakeholders, volunteers, and partners, we create
-                                    inclusive solutions tailored to real community needs.
-                                </p>
-                            </div>
-
-                            <div className="space-y-2">
-                                <h3 className={`${nunito.className} font-extrabold text-[16px] text-gray-900`}>
-                                    Accountability with Compassion
-                                </h3>
-                                <p className={`${cabin.className} text-[14px] text-gray-700 leading-relaxed`}>
-                                    While compassion drives our mission, accountability ensures
-                                    our impact. We continuously evaluate our programs to guarantee
-                                    that every contribution creates meaningful and lasting change.
-                                </p>
-                            </div>
+                            <p className={`${cabin.className} text-[16px] text-gray-700 leading-relaxed text-justify italic border-l-4 border-teal-600 pl-8 pt-4 relative`}>
+                                <span className="absolute left-2 top-0 text-4xl text-black/20 font-serif leading-none">"</span>
+                                <em>I believe that <strong className="text-[#0a7061]">true success</strong> is measured not by what we achieve for
+                                    ourselves, but by what we <strong className="text-[#0a7061]">enable others to achieve</strong>. Through this
+                                    foundation, we strive to sow <strong className="text-[#0a7061]">seeds of hope, dignity, and growth</strong> that will inspire generations to
+                                    come.
+                                    <span className="inline-block translate-y-2 ml-1 text-4xl text-black/20 font-serif leading-none">"</span>
+                                </em>
+                            </p>
                         </div>
                     </div>
                 </div>

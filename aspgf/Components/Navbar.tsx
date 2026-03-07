@@ -90,6 +90,7 @@ export function Navbar() {
                         </div>
                     </div>
 
+
                     {/* CONTACT INFO */}
                     <div className="hidden lg:flex items-center gap-6 ml-auto text-[12px]">
                         {/* CIN Number */}
