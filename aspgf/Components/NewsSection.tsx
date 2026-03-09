@@ -29,7 +29,9 @@ export default function NewsSection() {
       setCanScrollLeft(scrollLeft > 10);
       setCanScrollRight(scrollLeft + clientWidth < scrollWidth - 10);
     }
+
   };
+
 
   useEffect(() => {
     const scrollNode = scrollRef.current;
@@ -89,7 +91,9 @@ export default function NewsSection() {
           <div className="hidden lg:block">
             <button
               onClick={() => router.push("/News")}
-              className={`${cabin.className} cursor-pointer mt-4 px-10 py-4 font-extrabold text-white rounded-full text-lg bg-gradient-to-r from-[#006e57] to-[#00b874] hover:shadow-[0_8px_30px_rgb(0,110,87,0.4)] transition-all duration-300 transform hover:-translate-y-0.5 tracking-wider  `}
+
+              className={`${cabin.className} cursor-pointer mt-4 px-10 py-4 font-extrabold text-white rounded-full text-lg bg-gradient-to-r from-[#006e57] to-[#00b874] shadow-lg shadow-[#006e57]/20 hover:shadow-[0_8px_30px_rgb(0,110,87,0.4)] transition-all duration-300 transform hover:-translate-y-0.5 tracking-wider`}
+
             >
               Read More
             </button>
@@ -202,7 +206,9 @@ export default function NewsSection() {
   );
 }
 
+
 function NewsCard({ card, onOpen }: { card: any; onOpen: () => void }) {
+
   return (
     <div
       className="w-[250px] md:w-[290px] group relative bg-white rounded-2xl overflow-hidden shadow-lg cursor-pointer transform transition-transform duration-500 hover:-translate-y-2 hover:shadow-2xl"

@@ -83,7 +83,6 @@ export default function AboutClient() {
                             href="/Brochure-ASPGF.pdf"
                             target="_blank"
                             rel="noopener noreferrer"
-                            download
                             className={`${nunito.className} group relative inline-flex items-center gap-5 bg-[#00735C] text-white px-10 py-5 rounded-full font-extrabold overflow-hidden transition-all duration-300 shadow-xl shadow-[#00735C]/20 hover:shadow-2xl hover:shadow-[#00735C]/40 hover:-translate-y-1 active:scale-95`}
                         >
                             {/* Subtle Hover Layer */}

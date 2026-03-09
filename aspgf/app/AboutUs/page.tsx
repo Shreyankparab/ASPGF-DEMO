@@ -1,9 +1,23 @@
 import { Metadata } from "next";
-import AboutClient from "@/Components/AboutUs/AboutClient";
+import dynamic from "next/dynamic";
 import AboutHero from "@/Components/AboutUs/AboutHero";
-import LeadershipSection from "@/Components/AboutUs/LeadershipSection";
-import HistorySection from "@/Components/AboutUs/HistorySection";
-import StatsSection from "@/Components/StatsSection";
+import AboutClient from "@/Components/AboutUs/AboutClient";
+
+// Dynamic imports for "Instant Rendering" by splitting JS bundles
+const StatsSection = dynamic(() => import("@/Components/StatsSection"), {
+    ssr: true,
+    loading: () => <div className="h-40 animate-pulse bg-gray-50 rounded-3xl" />
+});
+
+const LeadershipSection = dynamic(() => import("@/Components/AboutUs/LeadershipSection"), {
+    ssr: true,
+    loading: () => <div className="h-96 animate-pulse bg-gray-50 rounded-[40px]" />
+});
+
+const HistorySection = dynamic(() => import("@/Components/AboutUs/HistorySection"), {
+    ssr: true,
+    loading: () => <div className="h-96 animate-pulse bg-gray-100 rounded-[60px]" />
+});
 
 export const metadata: Metadata = {
     title: "About Us | Global Foundation",
@@ -22,18 +36,21 @@ export const metadata: Metadata = {
 export default function AboutPage() {
     return (
         <main className="w-full bg-white">
-            {/* HERO SECTION specifically for About Us */}
+            {/* HEROS - Loaded immediately with higher priority */}
             <AboutHero />
 
-            {/* CLIENT PART */}
+            {/* CLIENT SECTION - Essential content loaded immediately */}
             <AboutClient />
 
-            <StatsSection />
+            {/* BELOW THE FOLD - Dynamically loaded for "Instant" feel while preserving design */}
+            <section className="bg-white">
+                <div className="max-w-7xl mx-auto py-12">
+                    <StatsSection />
+                </div>
+            </section>
 
-            {/* LEADERSHIP PORTFOLIO PART */}
             <LeadershipSection />
 
-            {/* HISTORY PART */}
             <HistorySection />
         </main>
     );
