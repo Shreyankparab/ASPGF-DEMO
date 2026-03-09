@@ -23,6 +23,14 @@ export default function ImpactSection() {
   const [showSidebar, setShowSidebar] = useState(true);
   const sliderRef = useRef<HTMLDivElement>(null);
   const touchStart = useRef<number | null>(null);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 768);
+    handleResize(); // Set initial value
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   const nextSlide = useCallback(() => {
     setActiveIndex((prev) => (prev + 1) % videoStories.length);
@@ -33,6 +41,19 @@ export default function ImpactSection() {
       (prev) => (prev - 1 + videoStories.length) % videoStories.length,
     );
   }, []);
+
+  /* AUTO SLIDE LOGIC with Manual Reset */
+  useEffect(() => {
+    if (activeVideo) return; // Pause auto-slide when modal is open
+
+    const interval = setInterval(() => {
+      nextSlide();
+    }, 8000); // 8 seconds delay
+
+    // Reset timer whenever index changes (manual or auto)
+    // This prevents sudden jumps right after a manual click
+    return () => clearInterval(interval);
+  }, [nextSlide, activeVideo, activeIndex]);
 
   useEffect(() => {
     const cards = sliderRef.current?.querySelectorAll(".impact-card");
@@ -123,8 +144,8 @@ export default function ImpactSection() {
               Real stories from those who have witnessed meaningful change
               through our initiatives.
             </p>
-            {/* BUTTON */}
-            <div className="mt-10">
+            {/* BUTTON - Desktop Only */}
+            <div className="mt-10 hidden lg:block">
               <button
                 onClick={() => router.push("/Impact")}
                 className={`${cabin.className} cursor-pointer px-10 py-4 font-extrabold text-white rounded-full text-lg bg-gradient-to-r from-[#006e57] to-[#00b874] hover:shadow-[0_8px_30px_rgb(0,110,87,0.4)] transition-all duration-300 transform hover:-translate-y-0.5 tracking-wider  `}
@@ -140,7 +161,7 @@ export default function ImpactSection() {
               ref={sliderRef}
               onTouchStart={handleTouchStart}
               onTouchEnd={handleTouchEnd}
-              className="w-full h-[550px] md:h-[600px] lg:h-[480px] relative flex items-center justify-center lg:justify-start lg:pl-10"
+              className="w-full h-[470px] md:h-[600px] lg:h-[480px] relative flex items-center justify-center lg:justify-start lg:pl-10"
             >
               {videoStories.map((story, index) => {
                 let diff = index - activeIndex;
@@ -150,11 +171,16 @@ export default function ImpactSection() {
                 return (
                   <div
                     key={story.id}
-                    className="impact-card absolute transition-all duration-700 rounded-[24px] md:rounded-[32px] shadow-2xl overflow-hidden w-[95%] md:w-full max-w-[780px] bg-[#073D30]"
+                    className={`impact-card absolute transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] rounded-[24px] md:rounded-[32px] shadow-2xl overflow-hidden w-[95%] md:w-full max-w-[780px] bg-[#073D30] ${diff === 0 ? "cursor-default" : "cursor-pointer"}`}
                     style={{
                       zIndex: 30 - diff,
-                      transform: `translateX(${diff * 30}px) scale(${1 - diff * 0.06})`,
-                      opacity: 1 - diff * 0.4,
+                      transform: `
+                        translateX(${diff * (isMobile ? 15 : 40)}px) 
+                        translateY(${diff * (isMobile ? -10 : 0)}px)
+                        scale(${1 - diff * 0.08})
+                      `,
+                      opacity: 1 - diff * 0.35,
+                      filter: `blur(${diff * 0.5}px)`,
                     }}
                     onClick={() => setActiveIndex(index)}
                   >
@@ -214,19 +240,31 @@ export default function ImpactSection() {
             </div>
 
             {/* NAVIGATION BUTTONS - POSITIONED BELOW RIGHT SECTION */}
-            <div className="hidden lg:flex gap-4 mt-8 lg:mr-10">
-              <button
-                onClick={prevSlide}
-                className="w-12 h-12 rounded-full border-2 border-[#073D30] text-[#073D30] flex items-center justify-center hover:bg-[#073D30] hover:text-white transition-all duration-300 group"
-              >
-                <FaChevronLeft className="group-hover:-translate-x-0.5 transition-transform" />
-              </button>
-              <button
-                onClick={nextSlide}
-                className="w-12 h-12 rounded-full bg-[#073D30] text-white flex items-center justify-center hover:bg-[#0a5241] transition-all duration-300 shadow-md group"
-              >
-                <FaChevronRight className="group-hover:translate-x-0.5 transition-transform" />
-              </button>
+            <div className="flex flex-col lg:flex-row items-center gap-6 mt-4 md:mt-8 lg:mr-10">
+              {/* BUTTON - Mobile Only */}
+              <div className="lg:hidden">
+                <button
+                  onClick={() => router.push("/Impact")}
+                  className={`${cabin.className} cursor-pointer px-10 py-4 font-extrabold text-white rounded-full text-lg bg-gradient-to-r from-[#006e57] to-[#00b874] hover:shadow-[0_8px_30px_rgb(0,110,87,0.4)] transition-all duration-300 transform hover:-translate-y-0.5 tracking-wider  `}
+                >
+                  Explore More
+                </button>
+              </div>
+
+              <div className="hidden lg:flex gap-4">
+                <button
+                  onClick={prevSlide}
+                  className="w-12 h-12 rounded-full border-2 border-[#073D30] text-[#073D30] flex items-center justify-center hover:bg-[#073D30] hover:text-white transition-all duration-300 group"
+                >
+                  <FaChevronLeft className="group-hover:-translate-x-0.5 transition-transform" />
+                </button>
+                <button
+                  onClick={nextSlide}
+                  className="w-12 h-12 rounded-full bg-[#073D30] text-white flex items-center justify-center hover:bg-[#0a5241] transition-all duration-300 shadow-md group"
+                >
+                  <FaChevronRight className="group-hover:translate-x-0.5 transition-transform" />
+                </button>
+              </div>
             </div>
           </div>
         </div>

@@ -165,36 +165,30 @@ export default function NewsSection() {
       </div>
 
       <style jsx>{`
-        @keyframes news-marquee {
-          0% {
-            transform: translateX(0);
-          }
-          100% {
-            transform: translateX(-50%);
-          }
-        }
-
-        .hover\\:pause:hover {
-          animation-play-state: paused;
-        }
-
-        @media (min-width: 768px) {
-          .desktop-marquee {
-            animation: news-marquee 40s linear infinite;
-            width: fit-content !important;
-          }
-          .md-no-snap {
-            scroll-snap-type: none !important;
-            overflow-x: hidden !important;
-          }
-        }
-
         .no-scrollbar::-webkit-scrollbar {
           display: none;
         }
         .no-scrollbar {
           -ms-overflow-style: none;
           scrollbar-width: none;
+        }
+
+        @keyframes news-marquee {
+          0% { transform: translateX(0); }
+          100% { transform: translateX(-50%); }
+        }
+
+        @media (min-width: 1024px) {
+          .desktop-marquee {
+            animation: news-marquee 40s linear infinite;
+            width: fit-content !important;
+            overflow-x: hidden !important;
+            scroll-snap-type: none !important;
+          }
+          
+          .desktop-marquee:hover {
+            animation-play-state: paused;
+          }
         }
       `}</style>
 
@@ -204,7 +198,7 @@ export default function NewsSection() {
         items={newsData}
         initialIndex={modalInitialIndex}
       />
-    </section>
+    </section >
   );
 }
 

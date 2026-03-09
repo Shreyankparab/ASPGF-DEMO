@@ -19,6 +19,7 @@ interface OurWorkContentProps {
 
 export default function OurWorkContent({ activeCategory, searchQuery }: OurWorkContentProps) {
     const [currentPage, setCurrentPage] = useState(1);
+    const containerRef = React.useRef<HTMLDivElement>(null);
 
     // Reset to page 1 when filtering changes
     React.useEffect(() => {
@@ -47,12 +48,51 @@ export default function OurWorkContent({ activeCategory, searchQuery }: OurWorkC
         currentPage * ITEMS_PER_PAGE
     );
 
+    // Handle deep-link scrolling
+    React.useEffect(() => {
+        const hash = window.location.hash;
+        if (hash && hash.startsWith("#project-")) {
+            const id = parseInt(hash.replace("#project-", ""));
+
+            // 1. Check if it's the featured item
+            if (featured && featured.id === id) {
+                const element = document.getElementById(hash.substring(1));
+                if (element) {
+                    setTimeout(() => {
+                        element.scrollIntoView({ behavior: "smooth", block: "center" });
+                    }, 500);
+                }
+                return;
+            }
+
+            // 2. Check in the 'rest' items
+            const index = rest.findIndex(i => i.id === id);
+            if (index !== -1) {
+                const targetPage = Math.floor(index / ITEMS_PER_PAGE) + 1;
+                if (currentPage !== targetPage) {
+                    setCurrentPage(targetPage);
+                    // The scroll will happen in the next effect when the page is updated
+                } else {
+                    const element = document.getElementById(hash.substring(1));
+                    if (element) {
+                        setTimeout(() => {
+                            element.scrollIntoView({ behavior: "smooth", block: "center" });
+                        }, 500);
+                    }
+                }
+            }
+        }
+    }, [rest.length, activeCategory, featured, currentPage]);
+
     return (
-        <div className={`${cabin.className} flex-1 min-w-0`}>
+        <div ref={containerRef} className={`${cabin.className} flex-1 min-w-0`}>
 
             {/* Featured Card */}
             {featured && (
-                <div className="mb-10 rounded-xl overflow-hidden border border-gray-100 bg-white shadow-md flex flex-col md:flex-row min-h-[350px] md:h-[450px]">
+                <div
+                    id={`project-${featured.id}`}
+                    className="mb-10 rounded-xl overflow-hidden border border-gray-100 bg-white shadow-md flex flex-col md:flex-row min-h-[350px] md:h-[450px]"
+                >
                     <div className="relative w-full md:w-[60%] shrink-0 h-[280px] md:h-full p-3 md:p-4">
                         <div className="relative w-full h-full overflow-hidden rounded-xl shadow-sm">
                             <Image
@@ -84,7 +124,8 @@ export default function OurWorkContent({ activeCategory, searchQuery }: OurWorkC
                     {paginated.map((item) => (
                         <div
                             key={item.id}
-                            className="rounded-xl overflow-hidden border border-gray-100 bg-white shadow-md hover:shadow-lg transition-all duration-300 group flex flex-col h-full"
+                            id={`project-${item.id}`}
+                            className="rounded-xl overflow-hidden border border-gray-100 bg-white shadow-md hover:shadow-lg transition-all duration-300 group flex flex-col h-full scroll-mt-20"
                         >
                             <div className="relative w-full h-60 sm:h-72 overflow-hidden shrink-0">
                                 <Image

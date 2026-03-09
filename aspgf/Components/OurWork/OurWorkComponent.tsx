@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { Caveat, Cabin } from "next/font/google";
 import OurWorkSidebar from "./OurWorkSidebar";
 import OurWorkContent from "./OurWorkContent";
+import { allWorkItems } from "@/data/ourWorkData";
 
 const caveat = Caveat({ subsets: ["latin"] });
 const cabin = Cabin({ subsets: ["latin"], weight: ["400", "500", "600", "700"] });
@@ -11,6 +12,18 @@ const cabin = Cabin({ subsets: ["latin"], weight: ["400", "500", "600", "700"] }
 export default function OurWorkComponent() {
     const [activeCategory, setActiveCategory] = useState("All Category");
     const [searchQuery, setSearchQuery] = useState("");
+
+    // Detect hash on mount to switch category
+    React.useEffect(() => {
+        const hash = window.location.hash;
+        if (hash && hash.startsWith("#project-")) {
+            const id = parseInt(hash.replace("#project-", ""));
+            const item = allWorkItems.find(p => p.id === id);
+            if (item) {
+                setActiveCategory(item.category);
+            }
+        }
+    }, []);
 
     return (
         <div className={`${cabin.className} bg-[#f9f9f9] min-h-screen`}>
