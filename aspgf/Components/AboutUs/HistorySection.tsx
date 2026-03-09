@@ -44,8 +44,9 @@ const DEFAULT_CHARITY_INFO = {
 };
 
 const historyData: Record<string, any> = {
-    "2023": {
-        year: "Year 2023",
+
+    "2026": {
+        year: "Year 2026",
         title: "Foundation Laid",
         points: [
             {
@@ -68,41 +69,6 @@ const historyData: Record<string, any> = {
                 sub: [
                     "Built and renovated schools in underserved communities.",
                     "Supplied educational materials including textbooks and stationery.",
-                ],
-            },
-        ],
-    },
-
-    "2024": {
-        year: "Year 2024",
-        title: "Got First Reward From (NYC)",
-        points: [
-            {
-                head: "Provide access to quality education for underprivileged children.",
-                sub: [
-                    "Built and renovated schools in underserved communities.",
-                    "Supplied educational materials including textbooks and stationery.",
-                ],
-            },
-            {
-                head: "Support students with scholarships and learning materials.",
-                sub: [
-                    "Awarded scholarships to talented students.",
-                    "Distributed uniforms and learning kits.",
-                ],
-            },
-            {
-                head: "Conduct after-school programs to improve literacy.",
-                sub: [
-                    "Organized free tutoring sessions.",
-                    "Established reading clubs.",
-                ],
-            },
-            {
-                head: "Organize career guidance workshops for youth.",
-                sub: [
-                    "Conducted counseling sessions.",
-                    "Held vocational skill workshops.",
                 ],
             },
         ],
@@ -143,8 +109,45 @@ const historyData: Record<string, any> = {
         ],
     },
 
-    "2026": {
-        year: "Year 2026",
+    "2024": {
+        year: "Year 2024",
+        title: "Got First Reward From (NYC)",
+        points: [
+            {
+                head: "Provide access to quality education for underprivileged children.",
+                sub: [
+                    "Built and renovated schools in underserved communities.",
+                    "Supplied educational materials including textbooks and stationery.",
+                ],
+            },
+            {
+                head: "Support students with scholarships and learning materials.",
+                sub: [
+                    "Awarded scholarships to talented students.",
+                    "Distributed uniforms and learning kits.",
+                ],
+            },
+            {
+                head: "Conduct after-school programs to improve literacy.",
+                sub: [
+                    "Organized free tutoring sessions.",
+                    "Established reading clubs.",
+                ],
+            },
+            {
+                head: "Organize career guidance workshops for youth.",
+                sub: [
+                    "Conducted counseling sessions.",
+                    "Held vocational skill workshops.",
+                ],
+            },
+        ],
+    },
+
+
+
+    "2023": {
+        year: "Year 2023",
         title: "Foundation Laid",
         points: [
             {
@@ -171,6 +174,45 @@ const historyData: Record<string, any> = {
             },
         ],
     },
+
+
+    "2022": {
+        year: "Year 2022",
+        title: "Got First Reward From (NYC)",
+        points: [
+            {
+                head: "Provide access to quality education for underprivileged children.",
+                sub: [
+                    "Built and renovated schools in underserved communities.",
+                    "Supplied educational materials including textbooks and stationery.",
+                ],
+            },
+            {
+                head: "Support students with scholarships and learning materials.",
+                sub: [
+                    "Awarded scholarships to talented students.",
+                    "Distributed uniforms and learning kits.",
+                ],
+            },
+            {
+                head: "Conduct after-school programs to improve literacy.",
+                sub: [
+                    "Organized free tutoring sessions.",
+                    "Established reading clubs.",
+                ],
+            },
+            {
+                head: "Organize career guidance workshops for youth.",
+                sub: [
+                    "Conducted counseling sessions.",
+                    "Held vocational skill workshops.",
+                ],
+            },
+        ],
+    },
+
+
+
 };
 
 // Generate years dynamically
@@ -328,20 +370,62 @@ export default function HistorySection(): JSX.Element {
                         </h2>
                         <div className="h-1.5 w-48 bg-[#00735C] rounded-full mb-8"></div>
 
-                        {/* YEAR TABS */}
-                        <div className={`${nunito.className} flex gap-4 mb-8`}>
-                            {ALL_YEARS.map((year: string) => (
-                                <button
-                                    key={year}
-                                    onClick={() => setActiveYear(year)}
-                                    className={`px-6 py-2 rounded-full text-[13px] font-extrabold transition-all ${activeYear === year
-                                        ? "text-[#00735C] border-2 border-[#00735C] bg-[#e6f1ef]"
-                                        : "text-gray-400 hover:text-gray-600"
-                                        }`}
-                                >
-                                    {year}
-                                </button>
-                            ))}
+                        {/* YEAR SELECTION SECTION */}
+                        <div className="mb-14 relative select-none mr-0">
+                            <div className="flex justify-between items-center mb-10 px-1">
+                                <h3 className={`${nunito.className} text-[13px] font-bold text-gray-400 uppercase tracking-widest`}>Journey Roadmap</h3>
+                                <div className="px-5 py-2 bg-[#e6f1ef] rounded-2xl border border-[#00735C]/20 shadow-sm flex items-center gap-3">
+                                    <div className="w-2.5 h-2.5 bg-[#00735C] rounded-full animate-pulse shadow-[0_0_8px_rgba(0,115,92,0.4)]"></div>
+                                    <span className={`${nunito.className} font-extrabold text-[#00735C] text-xl`}>{activeYear}</span>
+                                </div>
+                            </div>
+
+                            {/* HORIZONTAL SCROLLING ROADMAP (Universal) */}
+                            <div className="relative w-full overflow-x-auto pb-12 pt-4 custom-scrollbar scroll-smooth">
+                                <div className="flex items-center gap-14 md:gap-24 min-w-max relative py-4 px-6 pr-14">
+                                    {/* Background Track Line */}
+                                    <div className="absolute top-1/2 left-0 w-full h-[3px] bg-gray-100 -translate-y-1/2 rounded-full overflow-hidden">
+                                        <div className="h-full bg-[#00735C]/5 w-full"></div>
+                                    </div>
+
+                                    {/* Years Roadmap (Descending Order) */}
+                                    {ALL_YEARS.map((year: string, index: number) => {
+                                        const isActive = activeYear === year;
+
+                                        return (
+                                            <button
+                                                key={year}
+                                                onClick={() => setActiveYear(year)}
+                                                className="relative flex flex-col items-center group outline-none cursor-pointer"
+                                            >
+                                                {/* Connecting segment to the next year (Neutral Light Gray) */}
+                                                {index < ALL_YEARS.length - 1 && (
+                                                    <div className="absolute top-1/2 left-1/2 w-14 md:w-24 h-[3px] -translate-y-1/2 z-0 bg-gray-100"></div>
+                                                )}
+
+                                                {/* Roadmap Point: Green for Active, Gray for Others */}
+                                                <div
+                                                    className={`w-5 h-5 md:w-6 md:h-6 rounded-full border-[3px] border-white transition-all duration-500 z-10 relative shadow-sm
+                                                        ${isActive
+                                                            ? 'bg-[#00735C] scale-150 shadow-[0_0_15px_rgba(0,115,92,0.3)] ring-2 ring-[#00735C]/10'
+                                                            : 'bg-gray-300 group-hover:bg-gray-400'}`}
+                                                >
+                                                </div>
+
+                                                {/* Year Label Below */}
+                                                <span
+                                                    className={`absolute top-10 ${nunito.className} text-[14px] md:text-[15px] font-extrabold transition-all duration-300 whitespace-nowrap
+                                                        ${isActive
+                                                            ? 'text-[#00735C] scale-110 translate-y-1'
+                                                            : 'text-gray-400 group-hover:text-gray-500'}`}
+                                                >
+                                                    {year}
+                                                </span>
+                                            </button>
+                                        );
+                                    })}
+                                </div>
+                            </div>
                         </div>
 
                         <div ref={contentRef}>

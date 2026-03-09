@@ -425,11 +425,11 @@ export default function ContactPage() {
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-9">
                         {/* Address */}
                         <div className="sm:row-span-2 bg-[#f8faf9] p-3 rounded-xl border border-[#e8f1ec]">
-                            <div className="w-8 h-8 rounded-full bg-white shadow-sm flex items-center justify-center mb-2">
+                            <div className="w-8 h-8 rounded-full bg-white shadow-sm flex items-center justify-center mb-2 mt-8">
                                 <MapPin className="text-[#00735C]" size={16} />
                             </div>
 
-                            <p className={`${nunito.className} text-[16px] font-extrabold text-[#00735C] uppercase tracking-wider mb-1`}>
+                            <p className={`${nunito.className} text-[16px] font-extrabold text-[#00735C] uppercase tracking-wider mb-1 `}>
                                 Address
                             </p>
 

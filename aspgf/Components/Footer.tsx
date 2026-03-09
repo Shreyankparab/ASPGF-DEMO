@@ -5,7 +5,7 @@ import Link from "next/link";
 import {
     FaTwitter,
     FaFacebookF,
-    FaPinterestP,
+    FaYoutube,
     FaInstagram,
 } from "react-icons/fa";
 import { Nunito, Cabin } from "next/font/google";
@@ -25,6 +25,7 @@ export default function Footer() {
         { label: "About us", href: "/AboutUs" },
         { label: "Our Work", href: "/OurWork" },
         { label: "News", href: "/News" },
+        { label: "Gallery", href: "/Gallery" },
         { label: "Impact", href: "/Impact" },
         { label: "Contact Us", href: "/contactUs" },
     ];
@@ -55,7 +56,7 @@ export default function Footer() {
 
                     {/* SOCIAL ICONS */}
                     <div className="flex items-center justify-center gap-4 w-full">
-                        {[FaTwitter, FaFacebookF, FaPinterestP, FaInstagram].map(
+                        {[FaTwitter, FaFacebookF, FaYoutube, FaInstagram].map(
                             (Icon, i) => (
                                 <div
                                     key={i}

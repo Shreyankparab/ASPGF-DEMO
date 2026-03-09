@@ -78,22 +78,22 @@ export default function AboutClient() {
                     </p>
 
                     {/* DOWNLOAD BROCHURE BUTTON */}
-                    <div className="pt-4">
+                    <div className="pt-4 flex justify-center lg:justify-start">
                         <a
                             href="/Brochure-ASPGF.pdf"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className={`${nunito.className} group relative inline-flex items-center gap-5 bg-[#00735C] text-white px-10 py-5 rounded-full font-extrabold overflow-hidden transition-all duration-300 shadow-xl shadow-[#00735C]/20 hover:shadow-2xl hover:shadow-[#00735C]/40 hover:-translate-y-1 active:scale-95`}
+                            className={`${nunito.className} group relative inline-flex items-center gap-4 md:gap-5 bg-[#00735C] text-white px-7 py-3.5 md:px-10 md:py-5 rounded-full font-extrabold overflow-hidden transition-all duration-300 shadow-xl shadow-[#00735C]/20 hover:shadow-2xl hover:shadow-[#00735C]/40 hover:-translate-y-1 active:scale-95`}
                         >
                             {/* Subtle Hover Layer */}
                             <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-10 transition-opacity duration-300"></div>
 
-                            <span className="relative z-10 uppercase tracking-[0.1em] text-[13px]">
+                            <span className="relative z-10 uppercase tracking-[0.1em] text-[12px] md:text-[13px]">
                                 Download Brochure
                             </span>
 
-                            <div className="relative z-10 flex items-center justify-center bg-white/20 w-9 h-9 rounded-full group-hover:bg-white group-hover:text-[#00735C] transition-all duration-500">
-                                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
+                            <div className="relative z-10 flex items-center justify-center bg-white/20 w-7 h-7 md:w-9 md:h-9 rounded-full group-hover:bg-white group-hover:text-[#00735C] transition-all duration-500">
+                                <ArrowRight className="w-4 h-4 md:w-5 md:h-5 group-hover:translate-x-1 transition-transform duration-300" />
                             </div>
                         </a>
                     </div>

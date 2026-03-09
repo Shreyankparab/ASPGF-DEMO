@@ -59,7 +59,7 @@ export default function RootLayout({
           </div>
 
           {/* Page Content */}
-          <main className="pt-20 md:pt-28 w-full">
+          <main className="pt-20 xl:pt-28 w-full">
             {children}
           </main>
 

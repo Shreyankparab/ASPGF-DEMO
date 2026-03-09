@@ -45,7 +45,7 @@ export default function ContactForm() {
                             })}
                             type="text"
                             id="name"
-                            placeholder="John Doe"
+                            placeholder="Alif Shaikh"
                             className={`w-full h-14 px-5 rounded-2xl bg-gray-50 border ${errors.name ? 'border-red-500 focus:ring-red-500/20' : 'border-gray-100 focus:border-[#00735C] focus:ring-[#00735C]/20'} focus:ring-2 outline-none transition-all text-[#1A2E35] placeholder:text-gray-400`}
                         />
                         {errors.name && <span className="text-red-500 text-xs font-semibold">{errors.name.message}</span>}
@@ -64,7 +64,7 @@ export default function ContactForm() {
                             })}
                             type="email"
                             id="email"
-                            placeholder="john@company.com"
+                            placeholder="aspgf@gmail.com"
                             className={`w-full h-14 px-5 rounded-2xl bg-gray-50 border ${errors.email ? 'border-red-500 focus:ring-red-500/20' : 'border-gray-100 focus:border-[#00735C] focus:ring-[#00735C]/20'} focus:ring-2 outline-none transition-all text-[#1A2E35] placeholder:text-gray-400`}
                         />
                         {errors.email && <span className="text-red-500 text-xs font-semibold">{errors.email.message}</span>}
@@ -140,7 +140,7 @@ export default function ContactForm() {
                     ></textarea>
                 </div>
 
-                <div className="flex mt-4">
+                <div className="flex justify-center mt-4">
                     <button
                         type="submit"
                         className="w-full sm:w-60 h-14 bg-[#00735C] text-white font-extrabold rounded-2xl hover:bg-[#005c4a] transition-colors shadow-lg shadow-[#00735C]/20 uppercase tracking-widest text-sm"

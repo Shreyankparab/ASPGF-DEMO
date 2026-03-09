@@ -119,7 +119,7 @@ export default function NewsModal({ isOpen, onClose, items, initialIndex }: News
 
     return (
         <div
-            className="fixed inset-0 z-[9999] flex flex-col md:flex-row bg-black/95 backdrop-blur-xl transition-all duration-500"
+            className="fixed inset-0 z-[9999] flex flex-col lg:flex-row bg-black/95 backdrop-blur-xl transition-all duration-500"
             onClick={onClose}
             onMouseMove={handleMouseMove}
             onMouseUp={handleMouseUp}
@@ -204,7 +204,7 @@ export default function NewsModal({ isOpen, onClose, items, initialIndex }: News
                         maxWidth:
                             typeof window !== "undefined" &&
                                 showInfo &&
-                                window.innerWidth > 768
+                                window.innerWidth > 1024
                                 ? "calc(100% - 450px)"
                                 : "100%",
                     }}
