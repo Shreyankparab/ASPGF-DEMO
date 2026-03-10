@@ -1,9 +1,8 @@
 "use client";
-
 import Image from "next/image";
 import React, { useEffect, useRef } from "react";
-import { FaInstagram, FaLinkedin, FaXTwitter } from "react-icons/fa6";
 import { Nunito, Cabin } from "next/font/google";
+import { useRouter } from "next/navigation";
 
 const nunito = Nunito({ subsets: ["latin"], weight: ["400", "700", "800"] });
 const manrope = Cabin({
@@ -20,13 +19,13 @@ export default function FoundersSection() {
       >
         Meet Our Founders
       </h2>
-
       <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
         <AnimatedCard
           name1="Dr. Sushant Patil"
           role="Founder"
           experience="20+ years of leadership in social development"
           image="/Images/SushantPatil.webp"
+          link="/AboutUs#sushant-patil"
         />
         <AnimatedCard
           name1="Adv. Anuja Sushant"
@@ -34,6 +33,7 @@ export default function FoundersSection() {
           role="Founder"
           experience="20+ years of experience in the education industry"
           image="/Images/AnujaPatil.webp"
+          link="/AboutUs#anuja-patil"
         />
       </div>
     </section>
@@ -42,7 +42,8 @@ export default function FoundersSection() {
 
 /* CARD COMPONENT */
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-function AnimatedCard({ name1, name2, role, experience, image }: any) {
+function AnimatedCard({ name1, name2, role, experience, image, link }: any) {
+  const router = useRouter();
   const cardRef = useRef<HTMLDivElement | null>(null);
   const [isOpen, setIsOpen] = React.useState(false);
 
@@ -63,7 +64,13 @@ function AnimatedCard({ name1, name2, role, experience, image }: any) {
   // detect mobile click
   const handleClick = () => {
     if (window.innerWidth < 768) {
-      setIsOpen(!isOpen);
+      if (isOpen) {
+        router.push(link);
+      } else {
+        setIsOpen(true);
+      }
+    } else {
+      router.push(link);
     }
   };
 
@@ -73,7 +80,7 @@ function AnimatedCard({ name1, name2, role, experience, image }: any) {
       onClick={handleClick}
       className="
         opacity-100
-        relative group w-[330px] md:w-[380px] rounded-3xl overflow-hidden shadow-xl cursor-default
+        relative group w-[330px] md:w-[380px] rounded-3xl overflow-hidden shadow-xl cursor-pointer
         transition-all duration-700
       "
     >
@@ -125,9 +132,9 @@ function AnimatedCard({ name1, name2, role, experience, image }: any) {
       <div
         className={`
           absolute bottom-0 left-0 w-full
-          p-6 text-white text-center
-          bg-white/20 backdrop-blur-xl
-          transform-gpu transition-all duration-500 ease-out
+          p-8 text-white text-center
+          bg-black/40 backdrop-blur-lg
+          transform-gpu transition-all duration-500 ease-out flex flex-col items-center justify-center h-full
           ${isOpen
             ? "opacity-100 translate-y-0"
             : "opacity-0 translate-y-full group-hover:translate-y-0 group-hover:opacity-100"
@@ -152,19 +159,17 @@ function AnimatedCard({ name1, name2, role, experience, image }: any) {
           {experience}
         </p>
 
-        {/* SOCIAL ICONS */}
-        <div className="flex items-center justify-center gap-6 mt-5">
-          <div className="bg-white rounded-full p-3 hover:scale-110 transition">
-            <FaInstagram size={22} className="text-green-700" />
-          </div>
-          <div className="bg-white rounded-full p-3 hover:scale-110 transition">
-            <FaLinkedin size={22} className="text-green-700" />
-          </div>
-          <div className="bg-white rounded-full p-3 hover:scale-110 transition">
-            <FaXTwitter size={22} className="text-green-700" />
-          </div>
-        </div>
+        <button
+          className="mt-6 px-6 py-2 bg-white text-[#0b6a52] rounded-full font-bold text-sm hover:bg-gray-100 transition-colors"
+          onClick={(e) => {
+            e.stopPropagation();
+            router.push(link);
+          }}
+        >
+          Read Message
+        </button>
       </div>
     </div>
   );
 }
+

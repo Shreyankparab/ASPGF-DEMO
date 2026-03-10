@@ -14,7 +14,7 @@ export const newsData: NewsItem[] = [
         id: 1,
         title: "There are many variations of",
         category: "Health",
-        image: "/Images/News.webp",
+        image: "/Images/News/news1.webp",
         location: "Pune",
         date: "23/07/2025",
     },

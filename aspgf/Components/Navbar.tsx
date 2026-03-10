@@ -1,10 +1,9 @@
 "use client";
 
-import { useRouter } from "next/navigation";
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { Phone, Mail, MapPin, Menu, X, HandHeart } from "lucide-react";
 import { Nunito, Cabin } from "next/font/google";
 
@@ -15,9 +14,9 @@ const cabin = Cabin({
 });
 
 export function Navbar() {
-    const router = useRouter();
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const pathname = usePathname();
+    const router = useRouter();
 
     const navLinks = [
         { name: "Home", href: "/" },
@@ -84,14 +83,15 @@ export function Navbar() {
                     {/* LOGO - Hanging over Top and Nav Bar */}
                     <div className="absolute left-6 lg:left-10 top-0 z-[10025]">
                         <div className="relative w-72 h-28 lg:w-80 lg:h-32">
-                            <Image
-                                onClick={() => router.push("/")}
-                                src="/Images/aspgf-logo.png"
-                                alt="ASPGF Logo"
-                                fill
-                                className="object-contain cursor-pointer"
-                                priority
-                            />
+                            <Link href="/">
+                                <Image
+                                    src="/Images/aspgf-logo.png"
+                                    alt="ASPGF Logo"
+                                    fill
+                                    className="object-contain cursor-pointer"
+                                    priority
+                                />
+                            </Link>
                         </div>
                     </div>
 

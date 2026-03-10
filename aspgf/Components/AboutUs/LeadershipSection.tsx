@@ -46,7 +46,7 @@ export default function LeadershipSection() {
         <section className="bg-white py-20">
             <div className="max-w-5xl mx-auto px-8 space-y-20">
                 {/* ================= SECTION 1: DR. SUSHANT PATIL ================= */}
-                <div>
+                <div id="sushant-patil" className="scroll-mt-32">
                     <div className="mb-12">
                         <h2
                             className={`${nunito.className} text-[26px] text-black font-black tracking-tight leading-none pb-2`}
@@ -173,7 +173,7 @@ export default function LeadershipSection() {
                 </div>
 
                 {/* ================= SECTION 2: ANUJA PATIL ================= */}
-                <div>
+                <div id="anuja-patil" className="scroll-mt-32">
                     <div className="mb-12">
                         <h2
                             className={`${nunito.className} text-[26px] text-black font-black tracking-tight leading-none pb-2`}

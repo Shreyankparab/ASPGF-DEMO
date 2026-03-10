@@ -80,7 +80,7 @@ export default function AboutClient() {
                     {/* DOWNLOAD BROCHURE BUTTON */}
                     <div className="pt-4 flex justify-center lg:justify-start">
                         <a
-                            href="/Brochure-ASPGF.pdf"
+                            href="/New_Brochure _ASPGF.pdf"
                             target="_blank"
                             rel="noopener noreferrer"
                             className={`${nunito.className} group relative inline-flex items-center gap-4 md:gap-5 bg-[#00735C] text-white px-7 py-3.5 md:px-10 md:py-5 rounded-full font-extrabold overflow-hidden transition-all duration-300 shadow-xl shadow-[#00735C]/20 hover:shadow-2xl hover:shadow-[#00735C]/40 hover:-translate-y-1 active:scale-95`}
