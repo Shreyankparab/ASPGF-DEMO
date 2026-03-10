@@ -127,7 +127,7 @@ export default function ImpactSection() {
                 <div className="flex items-center gap-4 mt-2">
                   <div className="relative w-10 h-10 md:w-14 md:h-14 flex-shrink-0">
                     <Image
-                      src="/images/Quattaion.svg"
+                      src="/images/quotation.svg"
                       alt="Quotation icon"
                       fill
                       className="object-contain"
