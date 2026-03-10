@@ -52,7 +52,7 @@ export default function AboutHero() {
             {/* Background Image */}
             <div className="absolute inset-0 z-0 hero-bg">
                 <Image
-                    src={isMobile ? "/images/hero-image-about-us.svg" : "/images/About_Hero.webp"}
+                    src={isMobile ? "/images/hero-image-about-us.svg" : "/images/about_hero.webp"}
                     alt="Happy children in community"
                     fill
                     className="object-cover object-center"

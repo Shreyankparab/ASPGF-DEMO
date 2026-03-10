@@ -187,7 +187,7 @@ export default function WhatWeDoSection() {
               {/* MAIN IMAGE */}
               <div className="relative w-[240px] h-[450px] md:w-[400px] md:h-[550px] overflow-hidden rounded-[40px]">
                 <Image
-                  src="/images/WhatWeDo1.webp"
+                  src="/images/whatwedo1.webp"
                   alt="Community"
                   fill
                   className="object-cover"
@@ -230,7 +230,7 @@ export default function WhatWeDoSection() {
                 <div className="relative w-[165px] h-[225px] md:w-[225px] md:h-[300px]">
                   <div className="relative w-full h-full rounded-t-[30px] md:rounded-t-[45px] overflow-hidden border-2 md:border-4 border-white bg-white">
                     <Image
-                      src="/images/WhatWeDo2.webp"
+                      src="/images/whatwedo2.webp"
                       alt="Kids"
                       fill
                       className="object-cover"

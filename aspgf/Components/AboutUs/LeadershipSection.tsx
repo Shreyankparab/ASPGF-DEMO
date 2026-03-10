@@ -67,7 +67,7 @@ export default function LeadershipSection() {
 
                                 <div className="w-full h-full rounded-xl overflow-hidden shadow-xl bg-transparent border-[6px] border-white relative z-10">
                                     <Image
-                                        src="/images/Sushant-patil.png"
+                                        src="/images/sushant-patil.png"
                                         alt="Dr. Sushant Patil"
                                         fill
                                         className="w-full h-full object-cover"
@@ -194,7 +194,7 @@ export default function LeadershipSection() {
 
                                 <div className="w-full h-full rounded-xl overflow-hidden shadow-xl bg-transparent border-[6px] border-white relative z-10">
                                     <Image
-                                        src="/images/Anuja-patil.png"
+                                        src="/images/anuja-patil.png"
                                         alt="Anuja Patil"
                                         fill
                                         className="w-full h-full object-cover"
@@ -324,7 +324,7 @@ export default function LeadershipSection() {
 
                                 <div className="w-full h-full rounded-xl overflow-hidden shadow-xl bg-transparent border-[6px] border-white relative z-10">
                                     <Image
-                                        src="/images/SHRIRAM.png"
+                                        src="/images/shriram.png"
                                         alt="Dr. Shriram Chavan"
                                         fill
                                         className="w-full h-full object-cover"
