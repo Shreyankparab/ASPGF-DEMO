@@ -5,7 +5,7 @@ import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Phone, Mail, MapPin, Menu, X } from "lucide-react";
+import { Phone, Mail, MapPin, Menu, X, HandHeart } from "lucide-react";
 import { Nunito, Cabin } from "next/font/google";
 
 const nunito = Nunito({ subsets: ["latin"], weight: ["400", "700", "800"] });
@@ -26,6 +26,7 @@ export function Navbar() {
         { name: "News", href: "/news" },
         { name: "Gallery", href: "/gallery" },
         { name: "Impact", href: "/impact" },
+        { name: "Contact Us", href: "/contact-us" },
     ];
 
     const [isVisible, setIsVisible] = useState(true);
@@ -172,7 +173,7 @@ export function Navbar() {
                     <div className="hidden xl:block w-[15%] ml-60" />
 
                     <nav className="bg-[#00735C] flex-1 flex items-center px-10 rounded-tl-[45px] h-16">
-                        <ul className="flex items-center gap-28 text-white font-bold text-[15px] tracking-wide">
+                        <ul className="flex items-center gap-16 text-white font-bold text-[15px] tracking-wide">
                             {navLinks.map((link) => {
                                 const isActive = pathname === link.href;
                                 return (
@@ -195,13 +196,13 @@ export function Navbar() {
                         </ul>
                     </nav>
 
-                    {/* CONTACT BUTTON */}
+                    {/* DONATE BUTTON */}
                     <Link
-                        href="/contact-us"
+                        href="/donate-us"
                         className="h-16 px-10 bg-[#A828C6] hover:bg-[#9122AB] transition-all flex items-center gap-2 text-white font-black text-sm uppercase tracking-widest cursor-pointer whitespace-nowrap"
                     >
-                        <Phone size={18} fill="white" />
-                        <span>Contact</span>
+                        <HandHeart size={22} strokeWidth={2.5} />
+                        <span>Donate</span>
                     </Link>
 
                 </div>
@@ -275,12 +276,12 @@ export function Navbar() {
                         </div>
 
                         <Link
-                            href="/contact-us"
+                            href="/donate-us"
                             onClick={() => setIsMenuOpen(false)}
                             className="w-full py-4 bg-[#A828C6] text-white rounded-2xl flex items-center justify-center gap-2 font-black uppercase tracking-[0.1em] shadow-lg shadow-purple-500/20"
                         >
-                            <Phone size={18} fill="white" />
-                            <span>Contact Us</span>
+                            <HandHeart size={22} strokeWidth={2.5} />
+                            <span>Donate Us</span>
                         </Link>
                     </div>
                 </div>

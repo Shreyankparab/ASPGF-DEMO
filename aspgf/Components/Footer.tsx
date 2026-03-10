@@ -28,6 +28,7 @@ export default function Footer() {
         { label: "Gallery", href: "/gallery" },
         { label: "Impact", href: "/impact" },
         { label: "Contact Us", href: "/contact-us" },
+        { label: "Donate Us", href: "/donate-us" },
     ];
 
     return (
