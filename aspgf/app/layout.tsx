@@ -32,8 +32,8 @@ export const metadata: Metadata = {
   title: "Anuja Sushant Patil Global Foundation",
   description: "Empowering change through kindness and community support.",
   icons: {
-    icon: "/Images/simple-peacock.svg",
-    shortcut: "/Images/simple-peacock.svg",
+    icon: "/images/simple-peacock.svg",
+    shortcut: "/images/simple-peacock.svg",
   }
 };
 

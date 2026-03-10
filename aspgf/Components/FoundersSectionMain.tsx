@@ -24,7 +24,7 @@ export default function FoundersSection() {
           name1="Dr. Sushant Patil"
           role="Founder"
           experience="20+ years of leadership in social development"
-          image="/Images/SushantPatil.webp"
+          image="/images/SushantPatil.webp"
           link="/AboutUs#sushant-patil"
         />
         <AnimatedCard
@@ -32,7 +32,7 @@ export default function FoundersSection() {
           name2="Patil"
           role="Founder"
           experience="20+ years of experience in the education industry"
-          image="/Images/AnujaPatil.webp"
+          image="/images/AnujaPatil.webp"
           link="/AboutUs#anuja-patil"
         />
       </div>

@@ -42,7 +42,7 @@ export default function LoadingScreen() {
                     {/* Logo Center */}
                     <div className="relative w-14 h-14 bg-white rounded-2xl shadow-sm flex items-center justify-center p-2">
                         <Image
-                            src="/Images/simple-peacock.svg"
+                            src="/images/simple-peacock.svg"
                             alt="Logo"
                             width={40}
                             height={40}

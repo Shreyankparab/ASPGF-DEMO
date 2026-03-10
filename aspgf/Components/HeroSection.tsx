@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { Caveat, Nunito, Cabin } from "next/font/google";
-import React, { useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { gsap } from "gsap";
 
 const caveat = Caveat({ subsets: ["latin"], weight: ["400", "700"] });
@@ -13,6 +13,7 @@ const cabin = Cabin({
 });
 
 const HeroSection: React.FC = () => {
+  const [isMobile, setIsMobile] = useState(false);
   const heroRef = useRef<HTMLDivElement>(null);
   const targetRef = useRef(null);
   const handleScroll = () => {
@@ -26,6 +27,15 @@ const HeroSection: React.FC = () => {
       });
     }
   };
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -58,7 +68,7 @@ const HeroSection: React.FC = () => {
       {/* BACKGROUND IMAGE */}
       <div className="absolute inset-0 z-0 hero-bg">
         <Image
-          src="/Images/hero5.svg"
+          src={isMobile ? "/images/mobile-hero-img.svg" : "/images/hero5.svg"}
           alt="Hero Background"
           fill
           priority

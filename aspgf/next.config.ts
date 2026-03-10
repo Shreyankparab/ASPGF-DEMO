@@ -9,6 +9,9 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  turbopack: {
+    root: ".", // Ensures Next.js looks only in this folder for dependencies
+  },
 };
 
 

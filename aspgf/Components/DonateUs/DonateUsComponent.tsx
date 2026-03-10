@@ -95,7 +95,7 @@ export default function DonateUsComponent() {
                                     <div className="bg-white p-5 rounded-[32px] shadow-2xl transform rotate-2 hover:rotate-0 hover:scale-105 transition-all duration-500 cursor-pointer">
                                         <div className="relative p-2 bg-gray-50 rounded-2xl border border-gray-100">
                                             <Image
-                                                src="/Images/donation-qr.png"
+                                                src="/images/donation-qr.png"
                                                 alt="Donation QR Code"
                                                 width={260}
                                                 height={260}

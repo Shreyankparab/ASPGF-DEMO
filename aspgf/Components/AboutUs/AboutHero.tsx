@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import gsap from "gsap";
 import { Caveat, Nunito, Cabin } from "next/font/google";
 
@@ -10,8 +10,16 @@ const nunito = Nunito({ subsets: ["latin"], weight: ["400", "700", "800"] });
 const cabin = Cabin({ subsets: ["latin"], weight: ["400", "500", "600", "700"] });
 
 export default function AboutHero() {
+    const [isMobile, setIsMobile] = useState(false);
     const heroRef = useRef<HTMLDivElement>(null);
     const contentRef = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+        const handleResize = () => setIsMobile(window.innerWidth < 768);
+        handleResize();
+        window.addEventListener("resize", handleResize);
+        return () => window.removeEventListener("resize", handleResize);
+    }, []);
 
     useEffect(() => {
         const ctx = gsap.context(() => {
@@ -44,7 +52,7 @@ export default function AboutHero() {
             {/* Background Image */}
             <div className="absolute inset-0 z-0 hero-bg">
                 <Image
-                    src="/Images/About_Hero.webp"
+                    src={isMobile ? "/images/hero-image-about-us.svg" : "/images/About_Hero.webp"}
                     alt="Happy children in community"
                     fill
                     className="object-cover object-center"

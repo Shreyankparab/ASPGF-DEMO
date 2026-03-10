@@ -41,7 +41,7 @@ export default function Footer() {
                 <div className="flex flex-col items-center text-center pl-2 md:pl-16 lg:pl-20">
                     <div className="relative w-[300px] md:w-[450px] h-[80px] md:h-[110px] mx-auto">
                         <Image
-                            src="/Images/aspgf-logo.png"
+                            src="/images/aspgf-logo.png"
                             alt="Logo"
                             fill
                             className="object-contain"
