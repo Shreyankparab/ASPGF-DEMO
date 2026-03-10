@@ -3,12 +3,13 @@ import React, { useState, useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import Image from "next/image";
 import {
-  FiX,
-  FiArrowLeft,
-  FiArrowRight,
-  FiCalendar,
-  FiMapPin,
-} from "react-icons/fi";
+  X,
+  ArrowLeft,
+  ArrowRight,
+  Calendar,
+  MapPin,
+  Info
+} from "lucide-react";
 import { Nunito, Cabin } from "next/font/google";
 
 const nunito = Nunito({ subsets: ["latin"] });
@@ -23,7 +24,7 @@ export default function GalleryModal({
 }: any) {
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
   const [zoom, setZoom] = useState(1);
-  const [showInfo, setShowInfo] = useState(true);
+  const [showInfo, setShowInfo] = useState(false);
   const imageContainerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -56,31 +57,43 @@ export default function GalleryModal({
       onClick={onClose}
     >
       {/* Top Bar */}
-      <div className="absolute top-0 inset-x-0 h-20 flex items-center justify-between px-8 z-[50] pointer-events-none">
+      <div className="absolute top-0 inset-x-0 h-20 flex items-center justify-between px-6 z-[100] pointer-events-none">
         <div
-          className={`${cabin.className} text-white/50 text-sm font-bold pointer-events-auto `}
+          className={`${cabin.className} text-white/50 text-sm font-bold pointer-events-auto bg-black/20 px-4 py-2 rounded-full backdrop-blur-md`}
         >
           {selectedIndex + 1} / {items.length}
         </div>
-        <button
-          onClick={onClose}
-          className="p-3  rounded-full  bg-white/10 text-white pointer-events-auto hover:bg-[#00735C] transition-colors"
-        >
-          <FiX size={24} />
-        </button>
+        <div className="flex items-center gap-3 pointer-events-auto">
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              setShowInfo(!showInfo);
+            }}
+            className={`p-3 rounded-full transition-all ${showInfo ? "bg-[#00735C] text-white" : "bg-white/10 text-white hover:bg-white/20"}`}
+            title="Toggle Info"
+          >
+            <Info size={20} />
+          </button>
+          <button
+            onClick={onClose}
+            className="p-3 rounded-full bg-white/10 text-white hover:bg-red-500 transition-colors"
+          >
+            <X size={20} />
+          </button>
+        </div>
       </div>
 
       {/* Main Viewport */}
-      <div className="relative flex-grow flex items-center justify-center p-4 overflow-hidden">
+      <div className="relative flex-grow flex items-center justify-center p-4 overflow-hidden h-full">
         <button
           onClick={handlePrev}
-          className="absolute left-4 z-50 p-4 rounded-full bg-black/50 text-white hover:bg-[#00735C] transition-all"
+          className="absolute left-4 z-50 p-3 md:p-4 rounded-full bg-black/50 text-white hover:bg-[#00735C] transition-all backdrop-blur-sm sm:flex"
         >
-          <FiArrowLeft size={24} />
+          <ArrowLeft size={20} className="md:w-6 md:h-6" />
         </button>
 
         <div
-          className="relative w-full h-[80vh] transition-transform duration-500"
+          className="relative w-full h-full transition-transform duration-500 flex items-center justify-center"
           style={{ transform: `scale(${zoom})` }}
           onClick={(e) => e.stopPropagation()}
         >
@@ -88,39 +101,52 @@ export default function GalleryModal({
             src={currentItem.image}
             alt="Gallery"
             fill
-            className="object-contain"
+            className="object-contain p-4 md:p-8"
             priority
           />
         </div>
 
         <button
           onClick={handleNext}
-          className="absolute right-4 z-50 p-4 rounded-full bg-black/50 text-white hover:bg-[#00735C] transition-all"
+          className="absolute right-4 z-50 p-3 md:p-4 rounded-full bg-black/50 text-white hover:bg-[#00735C] transition-all backdrop-blur-sm sm:flex"
         >
-          <FiArrowRight size={24} />
+          <ArrowRight size={20} className="md:w-6 md:h-6" />
         </button>
       </div>
 
-      {/* Right Sidebar */}
+      {/* Sidebar/Overlay Info */}
       <div
-        className={`w-full md:w-[400px] bg-black/40 border-l border-white/10 p-8 transition-all ${showInfo ? "translate-x-0" : "translate-x-full hidden"}`}
+        className={`fixed md:relative bottom-0 left-0 right-0 md:top-0 w-full md:w-[400px] h-[60vh] md:h-full bg-black/80 md:bg-black/40 backdrop-blur-2xl md:backdrop-blur-none border-t md:border-t-0 md:border-l border-white/10 p-6 md:p-8 transition-all duration-500 z-[150] overflow-y-auto no-scrollbar ${showInfo
+            ? "translate-y-0 md:translate-x-0 opacity-100"
+            : "translate-y-full md:translate-x-full opacity-0 pointer-events-none md:absolute md:right-0"
+          }`}
         onClick={(e) => e.stopPropagation()}
       >
+        <div className="flex items-center justify-between mb-6 md:hidden">
+          <span className="text-white/30 text-[10px] font-bold uppercase tracking-[0.3em]">Event Details</span>
+          <button
+            onClick={() => setShowInfo(false)}
+            className="p-2 text-white/50 hover:text-white"
+          >
+            <X size={20} />
+          </button>
+        </div>
+
         <h2
-          className={`${nunito.className} text-white text-2xl font-black mb-6`}
+          className={`${nunito.className} text-white text-xl md:text-2xl font-black mb-4 md:mb-6`}
         >
           {currentItem.title}
         </h2>
-        <div className="flex flex-col gap-4 mb-8">
+        <div className="flex flex-col gap-3 md:gap-4 mb-6 md:mb-8">
           <span
             className={`${cabin.className} text-[#3ed0a6] text-xs font-bold uppercase tracking-widest flex items-center gap-2`}
           >
-            <FiCalendar /> {currentItem.date}
+            <Calendar size={14} /> {currentItem.date}
           </span>
           <span
             className={`${cabin.className} text-white/40 text-xs font-bold uppercase tracking-widest flex items-center gap-2`}
           >
-            <FiMapPin /> {currentItem.location}
+            <MapPin size={14} /> {currentItem.location}
           </span>
         </div>
         <div className="w-16 h-1 bg-[#00735C] rounded-full mb-8" />

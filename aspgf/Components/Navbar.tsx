@@ -259,22 +259,7 @@ export function Navbar() {
                         })}
                     </ul>
 
-                    <div className="mt-auto space-y-6">
-                        <div className="bg-gray-50 p-4 rounded-2xl space-y-3">
-                            <div className="flex items-center gap-3 text-sm text-gray-500">
-                                <Phone size={16} className="text-[#00735C]" />
-                                <a href="tel:+919684001643" className="hover:underline">
-                                    <span className={`${cabin.className} font-bold`}>9684001643</span>
-                                </a>
-                            </div>
-                            <div className="flex items-center gap-3 text-sm text-gray-500 lowercase tracking-tighter">
-                                <Mail size={16} className="text-[#00735C]" />
-                                <a href="mailto:project.director@aspgf.org" className="hover:underline">
-                                    <span className={`${cabin.className} font-bold`}>project.director@aspgf.org</span>
-                                </a>
-                            </div>
-                        </div>
-
+                    <div className="space-y-6 mt-4">
                         <Link
                             href="/donate-us"
                             onClick={() => setIsMenuOpen(false)}
